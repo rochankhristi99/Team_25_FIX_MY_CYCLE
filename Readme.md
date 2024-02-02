@@ -17,8 +17,8 @@ In this section, list and describe the features or functionality that you are wo
 
 - [ ] Feature 1 (Mudathir): Registration. 
 - [ ] Feature 2 (Keya Rabaya): Login.
-  - Sub-feature 2: View Profile
-  - Sub-feature 1: Update Booking Details.
+  - Sub-feature 1: View Profile
+  - Sub-feature 2: Update Booking Details.
 - [ ] Feature 3 (Rochan Khristi): Service Booking.
 - [ ] Feature 4 (Neeru): Payment For Service Booking.
   - Sub-feature 1: View Booking Receipt.
