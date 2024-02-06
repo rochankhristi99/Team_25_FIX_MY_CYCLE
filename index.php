@@ -1,6 +1,7 @@
 ﻿<?php
 include 'header.php';
 ?>
+
 <!--Main Content Section Start-->
 <div class="body_sec text-center">
     <h1 class="text_title">Why<span class="text_org"> Choose</span> Us</h1>

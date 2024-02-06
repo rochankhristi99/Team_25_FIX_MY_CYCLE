@@ -15,14 +15,48 @@
     <link href="css/neeru.css" rel="stylesheet">
     <link href="css/mudathir.css" rel="stylesheet">
     <style>
-.hidden{
-    display: none;
-}
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 
 <body>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form name="loginForm" action="login.php" method="post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body row">
+                        <div class="col-12">
+                            <label name="txtEmail" class="f-label">Email*</label>
+                            <input type="email" class="f-input" placeholder="Email">
+                        </div>
+
+                        <div class="col-12">
+                            <label name="txtPassword" class="f-label">Password*</label>
+                            <input type="password" class="f-input" placeholder="Password">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+
+
+
+
+    </div>
     <!--Navigation and Header Section Start-->
     <nav class="navbar navbar-expand-lg bg_light_blue">
         <div class="container-fluid">
@@ -46,7 +80,10 @@
                         <a class="nav-link" href="tutorials.php">TUTORIALS</a>
                     </li>
                     <li class="nav-item">
-                        <button class="buttonOrg">LOGIN</button>
+                        <button type="button buttonOrg" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            LOGIN
+                        </button>
                     </li>
 
                 </ul>
@@ -90,6 +127,8 @@
         </div>
         <a href="service_booking.html"><button class="ovrl_btn custom-position">Book Service</button></a>
     </div>
+
+
 
     <!--Navigation and Header Section 1 End-->
 
