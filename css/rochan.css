@@ -1,0 +1,407 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(../fontawesome-free-6.5.1-web/Montserrat/static/Montserrat-Bold.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-Medium;
+    src: url(../fontawesome-free-6.5.1-web/Montserrat/static/Montserrat-Medium.ttf);
+}
+
+body {
+    font-family: 'Montserrat-Medium';
+    color: #0B0B0B;
+}
+
+/* .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    --bs-gutter-x: none;
+} */
+
+/*Navbar CSS*/
+.navbar>.container,
+.navbar>.container-fluid,
+.navbar>.container-lg,
+.navbar>.container-md,
+.navbar>.container-sm,
+.navbar>.container-xl,
+.navbar>.container-xxl {
+
+    padding-top: 45px;
+}
+
+.navbar {
+    min-height: 130px;
+    font-family: 'Montserrat';
+    font-size: small;
+}
+
+.navbar-brand {
+    padding-left: 13%;
+    padding-right: 10%;
+}
+
+.nav-logo {
+    /*width: 221px;*/
+    width: 178px;
+}
+
+.navbar-nav {
+    gap: 60px;
+}
+
+.nav-link {
+    color: #0B0B0B;
+}
+
+.nav-link:hover {
+    color: #F24E1E;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+    color: #F24E1E;
+}
+
+/*Background Color CSS*/
+.bg_light_blue {
+    background-color: #E0EAF3;
+}
+
+.bg_dark {
+    background-color: #292526;
+}
+
+.text_org {
+    color: #EA5A47 !important;
+}
+
+.text_title {
+    font-family: Montserrat;
+}
+
+/*Button CSS*/
+.buttonOrg {
+    background-color: #FF734F;
+    color: #FFFFFF;
+    border-radius: 9px;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    border: none;
+    width: 114px;
+    position: relative;
+
+}
+
+.buttonOrg:hover {
+    background-color: #ff734fab;
+}
+
+.buttonOrg2 {
+    background-color: #ff734fcc;
+    color: #FFFFFF;
+    border-radius: 9px;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    border: none;
+    width: 50%;
+}
+
+/*Carousel CSS*/
+.caro_img {
+    max-height: 100vh;
+    opacity: 0.5;
+}
+
+.carousel {
+    background-color: #E0EAF3;
+}
+
+.carousel-control-prev-icon {
+    background-image: url('../img/prev_icn.png');
+    width: 20%;
+    height: 6%;
+}
+
+.carousel-control-next-icon {
+    background-image: url('../img/next_icn.png');
+    width: 20%;
+    height: 6%;
+}
+
+
+.carousel-control-next_1,
+.carousel-control-prev_1 {
+    width: 15%;
+    color: #fff;
+    text-align: center;
+    background: 0 0;
+    border: 0;
+    transition: opacity .15s ease;
+}
+
+/**/
+
+/*Overlay Button*/
+.overlay {
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Adjust the background color and opacity as needed */
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1D1D1B;
+    padding: 35px;
+    font-family: Montserrat;
+}
+
+.ovrl_btn {
+    position: absolute;
+    top: 57%;
+    left: 67%;
+    z-index: 1;
+    font-family: Montserrat;
+    background-color: #FF734F;
+    color: #FFFFFF;
+    border-radius: 9px;
+    text-align: center;
+    display: inline-block;
+    font-size: 30px;
+    border: none;
+    padding: 10px;
+}
+
+.ovrl_btn:hover {
+    background-color: #ff734fab;
+}
+
+
+
+
+
+/*Tutorial Page CSS*/
+.org_link {
+    color: #EA5A47;
+    text-decoration: none;
+}
+
+.org_link:hover {
+    color: hsla(12, 100%, 59%, 0.64);
+}
+
+.pagination {
+
+    --bs-pagination-font-size: 1.5rem;
+    --bs-pagination-color: #FF734F;
+    --bs-pagination-hover-color: #ffffff;
+    --bs-pagination-hover-bg: #FF734F;
+    --bs-pagination-border-radius: none;
+    padding-left: unset;
+    justify-content: center;
+    --bs-pagination-focus-color: #FF734F;
+    --bs-pagination-focus-box-shadow: none;
+    --bs-pagination-focus-bg: #0f0f0f;
+
+}
+
+/**/
+
+
+/*Form CSS*/
+.f-label {
+    color: #F24E1E !important;
+    border-color: #F24E1E !important;
+    font-weight: 500;
+    font-size: 1.22rem;
+    margin-bottom: 10px;
+    font-family: 'Montserrat-Medium';
+}
+
+.f-input {
+    background-color: #FFFFFF;
+    border: 1px solid #ececec;
+    border-radius: 7px !important;
+
+    opacity: 1;
+    transition: .3s;
+    min-height: 51px !important;
+    font-size: 1.0rem;
+    font-weight: 500;
+    outline: 1px solid transparent !important;
+    display: block;
+    width: 100%;
+
+    padding: 0.9em 1.2em;
+    line-height: 1.3em;
+    box-shadow: none;
+    margin-bottom: 30px;
+    font-family: 'Montserrat-Medium';
+}
+
+.f-input:hover {
+    border-color: rgba(242, 78, 30, 0.7) !important;
+    filter: contrast(0.95) !important;
+}
+
+.f-input:focus {
+    border-color: rgba(242, 78, 30, 0.7) !important;
+    filter: contrast(0.95) !important;
+}
+
+.form-check {
+    padding-left: 2.5em !important;
+    margin-bottom: 0.125rem;
+}
+
+.form-check-input:checked {
+    background-color: #ff734f;
+    border-color: #ff734f;
+}
+
+.form-check-input:checked[type=radio] {
+    --bs-form-check-bg-image: unset;
+}
+
+.btn-primary {
+    background-color: #ff734f;
+    border-color: #FF734F;
+}
+
+.btn-primary:hover {
+    background-color: #292526;
+    border-color: #292526;
+    color: white;
+}
+
+.btn-check:checked+.btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check)+.btn:active {
+    color: var(--bs-btn-active-color);
+    background-color: #f24e1e;
+    border-color: #f24e1e;
+}
+
+/**/
+
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+
+@media screen and (max-width: 1024px) {
+    .navbar-nav {
+        gap: unset;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .pick_your_color {
+        font-size: 16px;
+    }
+
+    .navbar-nav {
+        gap: unset;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 15%;
+        left: 1%;
+    }
+
+    .ovrl_btn {
+        position: absolute;
+        top: 80%;
+        left: 40%;
+        z-index: 1;
+        font-family: Montserrat;
+        background-color: #FF734F;
+        color: #FFFFFF;
+        border-radius: 9px;
+        text-align: center;
+        display: inline-block;
+        font-size: 15px;
+        border: none;
+        padding: 10px;
+    }
+
+    .table tr {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}
+
+@media screen and (min-width: 601px) {
+    .pick_your_color {
+        font-size: 1.25rem;
+    }
+}
+
+
+@media only screen and (max-width: 768px) and (min-width: 527px) {
+    .pick_your_color {
+        font-size: 1.25rem;
+    }
+
+    .ovrl_btn {
+        position: absolute;
+        top: 80%;
+        left: 40%;
+        z-index: 1;
+        font-family: Montserrat;
+        background-color: #FF734F;
+        color: #FFFFFF;
+        border-radius: 9px;
+        text-align: center;
+        display: inline-block;
+        font-size: 15px;
+        border: none;
+        padding: 10px;
+    }
+}
+
+/* Screens below 425px */
+@media (max-width: 508px) {
+    .font-size-xsmall {
+        font-size: x-small;
+    }
+
+    .font-size-large {
+        font-size: large;
+    }
+
+    .font-size-xsmall-unset {
+        font-size: x-small;
+        width: unset;
+    }
+
+    .custom-position {
+        position: absolute;
+        top: 81%;
+        left: 16%;
+        font-size: 7px;
+        height: 29px;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 7%;
+        left: 0%;
+        width: -webkit-fill-available;
+        height  : -webkit-fill-available;
+    }
+}

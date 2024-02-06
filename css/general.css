@@ -1,0 +1,16 @@
+/*Service Page*/
+.bg_dark_2 {
+    background-color: #292526;
+}
+.bg_dark_2:hover{
+    background-color: hsla(12, 100%, 59%, 0.64);
+}
+
+.cyclerepair_img{
+    width: 62%;
+    position: absolute;
+    left: 0;
+    bottom: -1097px;
+    opacity: 0.1;
+}
+/**/

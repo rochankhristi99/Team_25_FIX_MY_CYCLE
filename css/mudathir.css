@@ -1,0 +1,14 @@
+.body_sec {
+    background-color: #F6F6F6;
+    padding: 5%;
+    padding-bottom: 0%;
+}
+
+.body_sec2 {
+    background-color: #E0EAF3;
+    padding: 5%;
+}
+
+.img_bld {
+    mix-blend-mode: darken;
+}

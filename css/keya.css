@@ -1,0 +1,18 @@
+/*Accordings*/
+
+.accordion {
+    --bs-accordion-bg: none;
+    --bs-accordion-border-color: none;
+    ;
+    --bs-accordion-active-bg: none;
+    ;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+/**/
+
+
+

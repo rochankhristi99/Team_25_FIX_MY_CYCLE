@@ -1,0 +1,32 @@
+/*Footer*/
+
+.table {
+    width: unset;
+    --bs-table-color: none;
+    --bs-table-bg: none;
+    border-color: unset;
+}
+
+.fa-facebook,
+.fa-twitter,
+.fa-instagram,
+.fa-youtube {
+    color: #FF734F;
+}
+
+.fa-facebook:hover,
+.fa-twitter:hover,
+.fa-instagram:hover,
+.fa-youtube:hover {
+    color: aliceblue;
+}
+
+hr {
+    position: relative;
+    top: 20px;
+    border: none;
+    height: 2px;
+    background: #FF734F;
+    margin-bottom: 50px;
+    width: 75%;
+}
