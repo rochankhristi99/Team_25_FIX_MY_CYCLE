@@ -27,15 +27,19 @@ In this section, list and describe the features or functionality that you are wo
 
 ### Feature 1
 
-Include more detailed information about Feature 1 here. Provide links to related code files (github) & link to the feature (shell.hamk.fi).
+To get started, users sign up by providing some basic information about themselves. Provide links to related code files (github) & link to the feature (shell.hamk.fi).
 
 ### Feature 2
 
-Include more detailed information about Feature 2 here. Provide links to related code files (github) & link to the feature (shell.hamk.fi).
+Once users have an account, they can access it by simply entering their username and password. Once logged in, they can view their profile details and make any necessary updates to their service booking information. Provide links to related code files (github) & link to the feature (shell.hamk.fi).
 
 ### Feature 3
 
-Include more detailed information about Feature 3 here. Provide links to related code files (github) & link to the feature (shell.hamk.fi).
+Users can easily request a cycle service by selecting their preferred date and time, specifying the type of service they require, and providing their address and contact information. Provide links to related code files (github) & link to the feature (shell.hamk.fi).
+
+### Feature 4
+
+After completing the service booking form, users proceed to make the payment for their requested service. Upon successful payment, they receive a receipt as confirmation of their booking. Provide links to related code files (github) & link to the feature (shell.hamk.fi).
 
 ---
 
