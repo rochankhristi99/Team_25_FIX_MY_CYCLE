@@ -1,4 +1,5 @@
 <?php
+
 $servername = "db";
 $username = "fix_my_cycle";
 $password = "abc@123";
