@@ -24,39 +24,77 @@
 <body>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <form name="loginForm" action="login.php" method="post">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body row">
-                        <div class="col-12">
-                            <label name="txtEmail" class="f-label">Email*</label>
-                            <input type="email" class="f-input" placeholder="Email">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <form name="loginForm" action="" method="post">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        <div class="modal-body row">
+                            <div class="col-12">
+                                <label class="f-label">Email*</label>
+                                <input type="email" name="txtEmail" class="f-input" placeholder="Email">
+                            </div>
 
-                        <div class="col-12">
-                            <label name="txtPassword" class="f-label">Password*</label>
-                            <input type="password" class="f-input" placeholder="Password">
+                            <div class="col-12">
+                                <label class="f-label">Password*</label>
+                                <input type="password" name="txtPassword" class="f-input" placeholder="Password">
+                            </div>
+
                         </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <div class="modal-footer">
+                            
+    <button type="submit" name="submit" class="btn btn-primary">Login</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
-
-
-
-
-
-
+            </form>
+          
     </div>
+    <?php
+include 'db.php';
+
+if(isset($_POST['submit'])) 
+{
+if(isset($_POST['txtEmail']) && isset($_POST['txtPassword'])) 
+{
+    $email = $_POST['txtEmail'];
+    $pswd = $_POST['txtPassword'];
+
+    $result = mysqli_query($conn, "SELECT * FROM login_table WHERE email_id= '$email' AND password= '$pswd' ");
+
+    if($result) 
+    {
+        //I have Fetch the row
+        $row = mysqli_fetch_array($result);
+
+        //I have check row is null or not
+        if($row) 
+        {
+            $username= $row['email_id']; 
+            $_SESSION["useremail"] = $username;
+        } 
+        else 
+        {
+            echo "<script>alert('No matching user found.')</script>";
+        }
+    } 
+    else 
+    {
+        echo "Error executing the query: " . mysqli_error($conn);
+    }
+} else {
+    echo "<script>alert('Email and password not provided.')</script>";
+}
+}
+?>
+
+
+
+
+
     <!--Navigation and Header Section Start-->
     <nav class="navbar navbar-expand-lg bg_light_blue">
         <div class="container-fluid">
@@ -79,11 +117,26 @@
                     <li class="nav-item">
                         <a class="nav-link" href="tutorials.php">TUTORIALS</a>
                     </li>
-                    <li class="nav-item">
-                        <button type="button buttonOrg" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            LOGIN
-                        </button>
+                    <li class="nav-item">                        
+                    <a class="nav-link" style="padding-top: unset;" href="index.php">
+                    
+                        <?php
+if(isset($_SESSION["useremail"])) 
+{
+
+    echo "<img class='user_logo' src='img/user.png' />".strtoupper($_SESSION["useremail"]);
+}
+else
+{
+    ?></a>
+    <button type="button buttonOrg" class="btn btn-primary" data-bs-toggle="modal"
+    data-bs-target="#exampleModal">
+    LOGIN
+</button>
+<?php
+}
+                        ?>
+                       
                     </li>
 
                 </ul>
