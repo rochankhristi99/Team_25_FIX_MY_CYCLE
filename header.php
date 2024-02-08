@@ -1,3 +1,8 @@
+<?php
+/*
+session_start();
+*/
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,41 +57,12 @@
             </div>
         </form>
 
+
+
+
+
+
     </div>
-    <?php
-    include 'db.php';
-
-    if (isset($_POST['submit'])) {
-        if (isset($_POST['txtEmail']) && isset($_POST['txtPassword'])) {
-            $email = $_POST['txtEmail'];
-            $pswd = $_POST['txtPassword'];
-
-            $result = mysqli_query($conn, "SELECT * FROM login_table WHERE email_id= '$email' AND password= '$pswd' ");
-
-            if ($result) {
-                //I have Fetch the row
-                $row = mysqli_fetch_array($result);
-
-                //I have check row is null or not
-                if ($row) {
-                    $username = $row['email_id'];
-                    $_SESSION["useremail"] = $username;
-                } else {
-                    echo "<script>alert('No matching user found.')</script>";
-                }
-            } else {
-                echo "Error executing the query: " . mysqli_error($conn);
-            }
-        } else {
-            echo "<script>alert('Email and password not provided.')</script>";
-        }
-    }
-    ?>
-
-
-
-
-
     <!--Navigation and Header Section Start-->
     <nav class="navbar navbar-expand-lg bg_light_blue">
         <div class="container-fluid">
