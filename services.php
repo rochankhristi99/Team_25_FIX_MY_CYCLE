@@ -45,7 +45,7 @@ include 'header.php';
         </div>
 
         <div>
-            <img src="img/7155120.jpg" class="cyclerepair_img img_bld" />
+            <!-- <img src="img/7155120.jpg" class="cyclerepair_img img_bld" /> -->
             <center>
                 <div class="w-75 mb-5">
                     <em class="display-3">
