@@ -85,7 +85,7 @@ List any tables that you have created in the project work
 ## TODO LIST 
 Note : Might be change....
 # Mudathir 
-- [ ] Registration.
+- [x] Registration.
   - [ ] Table Design (registration_table)
   - [ ] Form Design
   - [ ] Validations
