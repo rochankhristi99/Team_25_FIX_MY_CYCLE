@@ -47,10 +47,10 @@ After completing the service booking form, users proceed to make the payment for
 
 List the database tables that are part of your project. 
 
-- Table 1 (Created By): Registration_Table
-- Table 2 (Created By): Login_Table
+- Table 1 (Created By Mudathir): Registration_Table
+- Table 2 (Created By Keya Rabaya): Login_Table
 - Table 3 (Created By Rochan Khristi): ServiceBooking_Table
-- Table 4 (Created By): PaymentCards_Table
+- Table 4 (Created By Neeru Sisodiya): PaymentCards_Table
 - Table 5 (Created By): Payment_Table
 
 > Include the ER Diagram of the database. 
