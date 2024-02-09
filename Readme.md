@@ -93,8 +93,8 @@ Note : Might be change....
 
 # Keya Rabaya 
 - [ ] Login.
-  - [ X ] Table Design (login_table)
-  - [ X ] Form Design (Login)
+  - [x] Table Design (login_table)
+  - [x] Form Design (Login)
   - [ ] Validations (Login)
   - [ ] Coding Part (Login)
         
@@ -109,11 +109,11 @@ Note : Might be change....
   - [ ] Coding Part (Update Booking Details)
 
 # Rochan Khristi 
-- [ x ] Set Layout.
+- [x] Set Layout.
         
 - [ ] Service Booking.
-  - [ ] Table Design (servicebooking_table)
-  - [ ] Form Design (Service Booking)
+  - [x] Table Design (servicebooking_table)
+  - [x] Form Design (Service Booking)
   - [ ] Validations (Service Booking)
   - [ ] Coding Part (Service Booking)
 
@@ -123,8 +123,8 @@ Note : Might be change....
 
 # Neeru Sisodiya 
 - [ ] Payment For Service Booking.
-  - [ ] Table Design (payment_cards)
-  - [ ] Form Design
+  - [x] Table Design (payment_cards)
+  - [x] Form Design
   - [ ] Validations
   - [ ] Coding Part
         
