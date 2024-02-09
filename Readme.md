@@ -93,8 +93,8 @@ Note : Might be change....
 
 # Keya Rabaya 
 - [ ] Login.
-  - [ ] Table Design (login_table)
-  - [ ] Form Design (Login)
+  - [ X ] Table Design (login_table)
+  - [ X ] Form Design (Login)
   - [ ] Validations (Login)
   - [ ] Coding Part (Login)
         
@@ -109,7 +109,7 @@ Note : Might be change....
   - [ ] Coding Part (Update Booking Details)
 
 # Rochan Khristi 
-- [ ] Set Layout.
+- [ x ] Set Layout.
         
 - [ ] Service Booking.
   - [ ] Table Design (servicebooking_table)
