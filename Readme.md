@@ -82,3 +82,49 @@ List any tables that you have created in the project work
 
 ---
 
+## TODO LIST 
+Note : Might be change....
+# Mudathir 
+- [ ] Registration.
+  - [ ] Table Design (registration_table)
+  - [ ] Form Design
+  - [ ] Validations
+  - [ ] Coding Part
+
+# Keya Rabaya 
+- [ ] Login.
+  - [ ] Table Design (login_table)
+  - [ ] Form Design (Login)
+  - [ ] Validations (Login)
+  - [ ] Coding Part (Login)
+        
+- [ ] View Profile.
+  - [ ] Form Design (View Profile)
+  - [ ] Validations (View Profile) 
+  - [ ] Coding Part (View Profile)
+
+- [ ] Update Booking Details.
+  - [ ] Form Design (Update Booking Details)
+  - [ ] Validations (Update Booking Details)
+  - [ ] Coding Part (Update Booking Details)
+
+# Rochan Khristi 
+- [ ] Set Layout.
+        
+- [ ] Service Booking.
+  - [ ] Table Design (servicebooking_table)
+  - [ ] Form Design (Service Booking)
+  - [ ] Validations (Service Booking)
+  - [ ] Coding Part (Service Booking)
+
+- [ ] View Booking Receipt
+  - [ ] Page Design (Service Booking)
+  - [ ] Coding Part (Service Booking)
+
+# Neeru Sisodiya 
+- [ ] Payment For Service Booking.
+  - [ ] Table Design (payment_cards)
+  - [ ] Form Design
+  - [ ] Validations
+  - [ ] Coding Part
+        
