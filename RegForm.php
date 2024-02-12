@@ -2,7 +2,7 @@
 $title = "Registration Form";
 include 'header_2.php'?>
 
-<form method="post" action="header_2.php">
+<form method="post" action="header.php">
 Username: <input type="text" name="registration_id" required minlength="4"> <br><br>
 Fname: <input type="text" name="first_name" required> <br><br>
 Lname: <input type="text" name="last_name" required> <br><br>
