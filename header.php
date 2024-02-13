@@ -26,7 +26,6 @@ if (!empty($_POST)) {
     } else {
         echo "Error executing the query: " . mysqli_error($conn);
     }
-
 }
 ?>
 <!DOCTYPE html>
