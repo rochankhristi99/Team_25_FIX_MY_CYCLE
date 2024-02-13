@@ -41,6 +41,44 @@
 <!-- Bootstrap Javascript -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
      <script src="css/rochan.js"></script> 
-</body>
 
+
+     <script>
+        function validateForm() {
+            debugger
+            var email = document.getElementById("txtEmail").value;
+            var password = document.getElementById("txtPassword").value;
+
+
+            if (!email.includes("@")) {
+                document.getElementById("emailError").innerHTML = "Please enter a valid email address.";
+                return false;
+            }
+            else if (password.length > 12 || password.length < 6) {
+                document.getElementById("passwordError").innerHTML = "Password must be between 6-12 characters only.";
+
+                
+                return false;
+            } else {
+                document.loginForm.submit();
+                return true;
+            }
+        }
+
+</script>
+<script>
+    var currentPage = "<?php echo basename($_SERVER['PHP_SELF']); ?>";
+    var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+    for (var i = 0; i < navLinks.length; i++) {
+        var link = navLinks[i];
+        var linkHref = link.getAttribute('href');
+
+        if (linkHref === currentPage) {
+            link.classList.add('active');
+            break; // Once found, no need to continue loop
+        }
+    }
+</script>
+</body>
 </html>
