@@ -36,15 +36,3 @@ showPage(1);
 // You can include more scripts if needed
 
 //Script 3 for Navbar
-var currentNavPage = "<?php echo basename($_SERVER['PHP_SELF']); ?>";
-var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-
-for (var i = 0; i < navLinks.length; i++) {
-    var link = navLinks[i];
-    var linkHref = link.getAttribute('href');
-
-    if (linkHref === currentNavPage) {
-        link.classList.add('active');
-        break; // Once found, no need to continue loop
-    }
-}

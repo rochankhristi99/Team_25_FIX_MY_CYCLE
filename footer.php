@@ -66,19 +66,6 @@
         }
 
 </script>
-<script>
-    var currentPage = "<?php echo basename($_SERVER['PHP_SELF']); ?>";
-    var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
-    for (var i = 0; i < navLinks.length; i++) {
-        var link = navLinks[i];
-        var linkHref = link.getAttribute('href');
-
-        if (linkHref === currentPage) {
-            link.classList.add('active');
-            break; // Once found, no need to continue loop
-        }
-    }
-</script>
 </body>
 </html>

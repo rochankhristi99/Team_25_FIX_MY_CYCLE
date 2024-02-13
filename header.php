@@ -55,7 +55,7 @@ if (!empty($_POST)) {
 <body>
     <!-- Modal -->
     <span id="myError" class="error" style="display:none;">Username or password is
-                                incorrect</span>
+        incorrect</span>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <form name="loginForm" action="" method="post">
             <div class="modal-dialog">
@@ -80,7 +80,7 @@ if (!empty($_POST)) {
                             <span class="error" id="error">
                                 <?php echo $loginErr; ?>
                             </span>
-                            
+
 
                         </div>
 
@@ -145,4 +145,17 @@ if (!empty($_POST)) {
         </div>
     </nav>
 
-    
+    <script>
+        var currentPage = "<?php echo basename($_SERVER['PHP_SELF']); ?>";
+        var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+        for (var i = 0; i < navLinks.length; i++) {
+            var link = navLinks[i];
+            var linkHref = link.getAttribute('href');
+
+            if (linkHref === currentPage) {
+                link.classList.add('active');
+                break; // Once found, no need to continue loop
+            }
+        }
+    </script>
