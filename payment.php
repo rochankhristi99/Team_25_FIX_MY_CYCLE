@@ -1,4 +1,5 @@
-<?php include 'header.php'; ?>
+<?php include 'header.php'; 
+?>
 <div class="body_sec">
 
   <h1 class="text_title mb-5 text-center">Pay<span class="text_org">ment</span></h1>
