@@ -1,20 +1,21 @@
 <?php
 include 'header.php';
 include 'db.php';
+$MyErr = "";
+
+
 
 // Second form submission
 if (isset($_POST['submitBooking'])) {
-
     if (isset($_GET['service_date'], $_GET['service_time'])) {
         $service_date = $_GET['service_date'];
         $service_time = $_GET['service_time'];
-        
-
-    }  else {
-
-        echo "Error: Service date, time, or type not set.";
+    } else {
+        echo "Error: Service date and time are not set.";
+        exit();
     }
-    $service_type =$_POST['gridRadios'];
+
+    $service_type = $_POST['gridRadios'];
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $address = $_POST['address'];
@@ -24,7 +25,7 @@ if (isset($_POST['submitBooking'])) {
     $contact_no = $_POST['contact_no'];
     $email_id = $_POST['email_id'];
     $specific_issue = $_POST['specific_issue'];
-    $payment_status = 0; 
+    $payment_status = 0;
 
     // Insert data into database
     $sql = "INSERT INTO servicebooking_table(service_type, service_date, service_time, first_name, last_name, address, city, state, pincode, contact_no, email_id, specific_issue, payment_status) 
@@ -32,8 +33,7 @@ if (isset($_POST['submitBooking'])) {
 
     if (mysqli_query($conn, $sql)) {
         //$bookingErr = "<script>alert('Service Booked Successfully')</script>";
-        echo "<script>window.location.href = 'payment_cards.php';</script>";
-   
+        echo "<script>window.location.href = 'payment.php';</script>";
     } else {
         echo "Error inserting record: " . mysqli_error($conn);
     }
@@ -44,6 +44,16 @@ $conn->close();
 <div class="body_sec">
 
     <h1 class="text_title mb-5 text-center">Service<span class="text_org"> Booking</span></h1>
+
+    <?php if (!empty($MyErr)) { ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Opps..</strong>
+            <?php echo $MyErr; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    <?php } ?>
+
 
     <div class="row">
         <div class="col-lg-3"></div>
@@ -150,8 +160,11 @@ $conn->close();
 
                 <div class="col-12 mb-5">
                     <center>
+
                         <button type="submit" name="submitBooking"
                             class="btn btn-primary btn-lg w-50 mt-5">Book</button>
+
+
                     </center>
                 </div>
 

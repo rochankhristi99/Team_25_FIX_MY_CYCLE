@@ -43,29 +43,7 @@
      <script src="css/rochan.js"></script> 
 
 
-     <script>
-        function validateForm() {
-            debugger
-            var email = document.getElementById("txtEmail").value;
-            var password = document.getElementById("txtPassword").value;
-
-
-            if (!email.includes("@")) {
-                document.getElementById("emailError").innerHTML = "Please enter a valid email address.";
-                return false;
-            }
-            else if (password.length > 12 || password.length < 6) {
-                document.getElementById("passwordError").innerHTML = "Password must be between 6-12 characters only.";
-
-                
-                return false;
-            } else {
-                document.loginForm.submit();
-                return true;
-            }
-        }
-
-</script>
+   
 
 </body>
 </html>

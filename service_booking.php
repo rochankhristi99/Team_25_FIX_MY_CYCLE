@@ -3,26 +3,64 @@ include 'header.php';
 include 'db.php';
 
 $bookingErr = "";
-$date = $time = ""; // Initialize variables
+$date = $time = "";
+$MyErr = "";
 
-// First form submission
+// Check if $_SESSION["useremail"] exists
+if (!isset($_SESSION["useremail"])) {
+    // Redirect or handle the case where user email is not set
+    $MyErr = "Please Login first to book service.";
+}
+
 if (isset($_POST['btnCont'])) {
     $date = $_POST['serv_date'];
     $time = $_POST['serv_time'];
 
-    // Redirect to the second form page with date and time as query parameters
-    echo "<script>window.location.href = 'service_booking2.php?service_date=$date&service_time=$time';</script>";
-    exit();
+    // Check if there are already more than three records with the same date and time
+    $sql = "SELECT COUNT(*) as count FROM servicebooking_table WHERE service_date = ? AND service_time = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $date, $time);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $count = $row['count'];
+
+    if ($count >= 3) {
+        $bookingErr = "Please select another time or date. This time slot is already booked.";
+    } else {
+        // Proceed to the next page if the time slot is available
+        echo "<script>window.location.href = 'service_booking2.php?service_date=$date&service_time=$time';</script>";
+        exit();
+    }
 }
 
 $conn->close();
 ?>
 
-
 <!--Main Content Section Start-->
 <div class="body_sec">
 
     <h1 class="text_title mb-5 text-center">Service<span class="text_org"> Booking</span></h1>
+
+
+    <?php if (!empty($MyErr)) { ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Opps..</strong>
+            <?php echo $MyErr; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    <?php } ?>
+
+    <?php if (!empty($bookingErr)) { ?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Opps..</strong>
+            <?php echo $bookingErr; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    <?php } ?>
+
 
     <div class="row">
         <div class="col-lg-3"></div>
@@ -38,16 +76,26 @@ $conn->close();
                     <label for="inputState" class="f-label">Time*</label>
                     <select id="inputid" name="serv_time" class="f-input">
                         <option selected>Choose...</option>
-                        <option>10:00 - 12:00</option>
-                        <option>12:00 - 14:00</option>
-                        <option>14:00 - 16:00</option>
-                        <option>16:00 - 18:00</option>
+                        <option>10:00-12:00</option>
+                        <option>12:00-14:00</option>
+                        <option>14:00-16:00</option>
+                        <option>16:00-18:00</option>
                     </select>
                 </div>
 
                 <div class="col-12 mb-5">
                     <center>
-                        <button type="submit" name="btnCont" class="btn btn-primary btn-lg w-50 ">Continue</button>
+                        <?php if (!empty($MyErr)) { ?>
+                            <button type="submit" name="btnCont" class="btn btn-primary btn-lg w-50" disabled>Continue</button>
+
+                        <?php } else {
+                            ?>
+                            <button type="submit" name="btnCont" class="btn btn-primary btn-lg w-50 ">Continue</button>
+                            <?php
+                        }
+
+                        ?>
+
                     </center>
                 </div>
 

@@ -296,6 +296,13 @@ body {
 }
 
 /**/
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    color: var(--bs-btn-disabled-color);
+    pointer-events: none;
+    background-color: #ffa785;
+    border-color: #ffa785;
+    opacity: var(--bs-btn-disabled-opacity);
+}
 
 
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */

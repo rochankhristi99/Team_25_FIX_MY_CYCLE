@@ -3,8 +3,8 @@ session_start(); // Start the session
 $loginErr = "";
 include 'db.php';
 // Check if form is submitted
-if (!empty($_POST)) {
-
+// if (!empty($_POST['loginForm'])) {
+    if (!empty($_POST)) {
     $email = $_POST['txtEmail'];
     $pswd = $_POST['txtPassword'];
 
@@ -146,6 +146,28 @@ if (!empty($_POST)) {
     </nav>
 
     <script>
+            function validateForm() {
+            debugger
+            var email = document.getElementById("txtEmail").value;
+            var password = document.getElementById("txtPassword").value;
+
+
+            if (!email.includes("@")) {
+                document.getElementById("emailError").innerHTML = "Please enter a valid email address.";
+                return false;
+            }
+            else if (password.length > 12 || password.length < 6) {
+                document.getElementById("passwordError").innerHTML = "Password must be between 6-12 characters only.";
+
+                
+                return false;
+            } else {
+                document.loginForm.submit();
+                return true;
+            }
+        }
+
+
         var currentPage = "<?php echo basename($_SERVER['PHP_SELF']); ?>";
         var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
