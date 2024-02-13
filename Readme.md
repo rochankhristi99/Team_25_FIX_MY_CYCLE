@@ -47,10 +47,10 @@ After completing the service booking form, users proceed to make the payment for
 
 List the database tables that are part of your project. 
 
-- Table 1 (Created By): Registration_Table
+- Table 1 (Created By Mudathir): Registration_Table
 - Table 2 (Created By Keya Rabaya): Login_Table
-- Table 3 (Created By): ServiceBooking_Table
-- Table 4 (Created By): PaymentCards_Table
+- Table 3 (Created By Rochan Khristi): ServiceBooking_Table
+- Table 4 (Created By Neeru Sisodiya): PaymentCards_Table
 - Table 5 (Created By): Payment_Table
 
 > Include the ER Diagram of the database. 
@@ -82,3 +82,49 @@ List any tables that you have created in the project work
 
 ---
 
+## TODO LIST 
+Note : Might be change....
+# Mudathir 
+- [x] Registration.
+  - [ ] Table Design (registration_table)
+  - [ ] Form Design
+  - [ ] Validations
+  - [ ] Coding Part
+
+# Keya Rabaya 
+- [ ] Login.
+  - [x] Table Design (login_table)
+  - [x] Form Design (Login)
+  - [ ] Validations (Login)
+  - [ ] Coding Part (Login)
+        
+- [ ] View Profile.
+  - [ ] Form Design (View Profile)
+  - [ ] Validations (View Profile) 
+  - [ ] Coding Part (View Profile)
+
+- [ ] Update Booking Details.
+  - [ ] Form Design (Update Booking Details)
+  - [ ] Validations (Update Booking Details)
+  - [ ] Coding Part (Update Booking Details)
+
+# Rochan Khristi 
+- [x] Set Layout.
+        
+- [ ] Service Booking.
+  - [x] Table Design (servicebooking_table)
+  - [x] Form Design (Service Booking)
+  - [ ] Validations (Service Booking)
+  - [ ] Coding Part (Service Booking)
+
+- [ ] View Booking Receipt
+  - [ ] Page Design (Service Booking)
+  - [ ] Coding Part (Service Booking)
+
+# Neeru Sisodiya 
+- [ ] Payment For Service Booking.
+  - [x] Table Design (payment_cards)
+  - [x] Form Design
+  - [ ] Validations
+  - [ ] Coding Part
+        
