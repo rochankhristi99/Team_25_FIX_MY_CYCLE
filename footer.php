@@ -2,7 +2,7 @@
 <div class="bg_dark px-5 py-5 text-white">
 
     <h3 class="fw-bolder mb-5"> CONTACT US</h3>
-    <table class="table ">
+    <table class="table text-white">
         <tr>
             <td>
                 Reach Us At
@@ -28,7 +28,6 @@
                 <a href="https://twitter.com/" target="_blank"><i class="fa-brands fa-2x fa-twitter"></i></a>
                 <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-2x fa-youtube"></i></a>
                 <a href="https://www.instagram.com/" target="_blank"> <i class="fa-brands fa-2x fa-instagram"></i></a>
-
             </td>
         </tr>
     </table>
@@ -39,3 +38,9 @@
     </center>
 
 </div>
+<!-- Bootstrap Javascript -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+     <script src="css/rochan.js"></script> 
+</body>
+
+</html>
