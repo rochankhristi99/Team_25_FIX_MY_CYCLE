@@ -40,6 +40,11 @@ if (isset($_POST['submitBooking'])) {
 }
 $conn->close();
 ?>
+<style>
+    p{
+        color:red;
+    }
+    </style>
 <!--Main Content Section Start-->
 <div class="body_sec">
 
@@ -148,6 +153,7 @@ $conn->close();
                 <div class="col-12">
                     <label for="inputAddress" class="f-label">CONTACT*</label>
                     <input type="number" name="contact_no"  class="f-input myInp" id="inputContact" placeholder="Contact">
+                    <p id="contactError"></p>
                 </div>
 
                 <div class="col-12">
@@ -197,6 +203,20 @@ $conn->close();
 
         return isValid;
     }
+
+    function validateContact() {
+        const contact = document.getElementById('inputContact').value;
+        const contactError = document.getElementById('contactError');
+
+        if (contact === "" || !contact.includes("+")) {
+            contactError.innerHTML = "Include the country code";
+            return false;
+        } else {
+            contactError.innerHTML = "";
+            return true;
+        }
+    }
+    document.getElementById("inputContact").addEventListener("input", validateContact);
 </script>   
 
 <?php

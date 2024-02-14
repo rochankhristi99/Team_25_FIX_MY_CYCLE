@@ -81,9 +81,12 @@ if(isset($_POST['login_btn']))
                             <span class="error" id="error">
                                 <?php echo $loginErr; ?>
                             </span>
+
                         </div>
+                        <a class="f-label" href="RegForm.php">registration ?</a>
                     </div>
                     <div class="modal-footer">
+
                         <button type="submit" name="login_btn" onclick="validateForm()"
                             class="btn btn-primary">Login</button>
                     </div>
