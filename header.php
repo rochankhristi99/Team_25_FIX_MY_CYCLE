@@ -3,18 +3,20 @@ session_start(); // Start the session
 $loginErr = "";
 include 'db.php';
 // Check if form is submitted
-// if (!empty($_POST['loginForm'])) {
-    if (!empty($_POST)) {
+if(isset($_POST['login_btn']))
+{
     $email = $_POST['txtEmail'];
     $pswd = $_POST['txtPassword'];
 
     $result = mysqli_query($conn, "SELECT * FROM login_table WHERE email_id= '$email' AND password= '$pswd' ");
-
     if ($result) {
         $row = mysqli_fetch_array($result);
         if ($row) {
             $username = $row['email_id'];
             $_SESSION["useremail"] = $username;
+            $regId= $row['reg_id_fk'];
+            $_SESSION["regId"] = $regId;
+
             header("Location: services.php");
         } else {
             //$loginErr = "Username or password is incorrect";
@@ -68,14 +70,14 @@ include 'db.php';
                         <div class="col-12">
                             <label class="f-label">Email*</label>
                             <input type="email" name="txtEmail" class="f-input" id="txtEmail" placeholder="Email"
-                                style="margin-bottom: 6px;">
+                                style="margin-bottom: 6px;" required>
                             <span id="emailError" class="error"></span><br><br>
                         </div>
 
                         <div class="col-12">
                             <label class="f-label">Password*</label>
                             <input type="password" name="txtPassword" class="f-input" id="txtPassword"
-                                placeholder="Password" style="margin-bottom: 30px;">
+                                placeholder="Password" style="margin-bottom: 30px;" maxlength="12" minlength="6" required>
                             <span id="passwordError" class="error"></span>
                             <span class="error" id="error">
                                 <?php echo $loginErr; ?>
@@ -86,7 +88,7 @@ include 'db.php';
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" name="submitBtn" onclick="validateForm()"
+                        <button type="submit" name="login_btn" onclick="validateForm()"
                             class="btn btn-primary">Login</button>
 
                     </div>
@@ -146,36 +148,36 @@ include 'db.php';
     </nav>
 
     <script>
-            function validateForm() {
-            debugger
-            var email = document.getElementById("txtEmail").value;
-            var password = document.getElementById("txtPassword").value;
+        // function validateForm() {
+        //     debugger
+        //     var email = document.getElementById("txtEmail").value;
+        //     var password = document.getElementById("txtPassword").value;
 
 
-            if (!email.includes("@")) {
-                document.getElementById("emailError").innerHTML = "Please enter a valid email address.";
-                return false;
-            }
-            else if (password.length > 12 || password.length < 6) {
-                document.getElementById("passwordError").innerHTML = "Password must be between 6-12 characters only.";
-
-                
-                return false;
-            } else {
-                document.loginForm.submit();
-                return true;
-            }
-        }
+        //     if (!email.includes("@")) {
+        //         document.getElementById("emailError").innerHTML = "Please enter a valid email address.";
+        //         return false;
+        //     }
+        //     else if (password.length > 12 || password.length < 6) {
+        //         document.getElementById("passwordError").innerHTML = "Password must be between 6-12 characters only.";
 
 
-        var currentPage = "<?php echo basename($_SERVER['PHP_SELF']); ?>";
+        //         return false;
+        //     } else {
+        //         document.loginForm.submit();
+        //         return true;
+        //     }
+        // }
+
+
+        var currentMyPage = "<?php echo basename($_SERVER['PHP_SELF']); ?>";
         var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
         for (var i = 0; i < navLinks.length; i++) {
             var link = navLinks[i];
             var linkHref = link.getAttribute('href');
 
-            if (linkHref === currentPage) {
+            if (linkHref === currentMyPage) {
                 link.classList.add('active');
                 break; // Once found, no need to continue loop
             }

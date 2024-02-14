@@ -1,21 +1,21 @@
 // Script 1
-let currentPage = 1;
-const totalPages = 3;
+// let currentPage = 1;
+// const totalPages = 3;
 
-function showPage(page) {
-    currentPage = Math.max(1, Math.min(totalPages, page)); // Ensure page is within bounds
-    for (let i = 1; i <= totalPages; i++) {
-        document.getElementById('page' + i).style.display = (i === currentPage) ? 'inline-flex' : 'none';
-    }
-    updatePaginationButtons();
-}
+// function showPage(page) {
+//     currentPage = Math.max(1, Math.min(totalPages, page)); // Ensure page is within bounds
+//     for (let i = 1; i <= totalPages; i++) {
+//         document.getElementById('page' + i).style.display = (i === currentPage) ? 'inline-flex' : 'none';
+//     }
+//     updatePaginationButtons();
+// }
 
-function updatePaginationButtons() {
-    document.getElementById('prevBtn').disabled = currentPage === 1;
-    document.getElementById('nextBtn').disabled = currentPage === totalPages;
-}
+// function updatePaginationButtons() {
+//     document.getElementById('prevBtn').disabled = currentPage === 1;
+//     document.getElementById('nextBtn').disabled = currentPage === totalPages;
+// }
 
-showPage(1);
+// showPage(1);
 
 // Script 2
 // function toggleDivs() {
@@ -36,3 +36,17 @@ showPage(1);
 // You can include more scripts if needed
 
 //Script 3 for Navbar
+
+function myFunction() {
+    debugger
+    // Get the value of the input field with id="numb"
+    let x = document.getElementsByClassName("valid").value;
+    // If x is Not a Number or less than one or greater than 10
+    let text;
+    if (isNaN(x) || x < 1 || x > 10) {
+      text = "Input not valid";
+    } else {
+      text = "Input OK";
+    }
+    document.getElementById("demo").innerHTML = text;
+  }

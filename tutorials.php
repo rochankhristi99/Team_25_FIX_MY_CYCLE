@@ -208,7 +208,25 @@ include 'header.php';
 
     </ul>
 </div>
+<script>
+    let currentPage = 1;
+const totalPages = 3;
 
+function showPage(page) {
+    currentPage = Math.max(1, Math.min(totalPages, page)); // Ensure page is within bounds
+    for (let i = 1; i <= totalPages; i++) {
+        document.getElementById('page' + i).style.display = (i === currentPage) ? 'inline-flex' : 'none';
+    }
+    updatePaginationButtons();
+}
+
+function updatePaginationButtons() {
+    document.getElementById('prevBtn').disabled = currentPage === 1;
+    document.getElementById('nextBtn').disabled = currentPage === totalPages;
+}
+
+showPage(1);
+    </script>
 <?php
 include 'footer.php';
 ?>
