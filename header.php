@@ -1,5 +1,5 @@
 <?php
-session_start(); // Start the session
+@session_start(); 
 $loginErr = "";
 include 'db.php';
 // Check if form is submitted
@@ -7,7 +7,6 @@ if(isset($_POST['login_btn']))
 {
     $email = $_POST['txtEmail'];
     $pswd = $_POST['txtPassword'];
-
     $result = mysqli_query($conn, "SELECT * FROM login_table WHERE email_id= '$email' AND password= '$pswd' ");
     if ($result) {
         $row = mysqli_fetch_array($result);
@@ -16,8 +15,8 @@ if(isset($_POST['login_btn']))
             $_SESSION["useremail"] = $username;
             $regId= $row['reg_id_fk'];
             $_SESSION["regId"] = $regId;
-
-            header("Location: services.php");
+            echo "<script>window.location.href = 'home.php';</script>";
+           
         } else {
             //$loginErr = "Username or password is incorrect";
             echo "<script>";
@@ -26,7 +25,7 @@ if(isset($_POST['login_btn']))
             echo "</script>";
         }
     } else {
-        echo "Error executing the query: " . mysqli_error($conn);
+        echo "Error executing the query:" . mysqli_error($conn);
     }
 }
 ?>
@@ -82,15 +81,11 @@ if(isset($_POST['login_btn']))
                             <span class="error" id="error">
                                 <?php echo $loginErr; ?>
                             </span>
-
-
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="submit" name="login_btn" onclick="validateForm()"
                             class="btn btn-primary">Login</button>
-
                     </div>
                 </div>
             </div>
@@ -100,7 +95,7 @@ if(isset($_POST['login_btn']))
     <!--Navigation and Header Section Start-->
     <nav class="navbar navbar-expand-lg bg_light_blue">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php"><img src="img/Logo.png" class="nav-logo" /></a>
+            <a class="navbar-brand" href="home.php"><img src="img/Logo.png" class="nav-logo" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -108,7 +103,7 @@ if(isset($_POST['login_btn']))
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php">HOME</a>
+                        <a class="nav-link" aria-current="page" href="home.php">HOME</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="services.php">SERVICES</a>
@@ -168,8 +163,6 @@ if(isset($_POST['login_btn']))
         //         return true;
         //     }
         // }
-
-
         var currentMyPage = "<?php echo basename($_SERVER['PHP_SELF']); ?>";
         var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 

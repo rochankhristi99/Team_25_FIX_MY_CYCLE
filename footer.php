@@ -41,9 +41,5 @@
 <!-- Bootstrap Javascript -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
      <script src="css/rochan.js"></script> 
-
-
-   
-
 </body>
 </html>

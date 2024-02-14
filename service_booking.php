@@ -1,12 +1,9 @@
 <?php
 include 'header.php';
 include 'db.php';
-
 $bookingErr = "";
 $date = $time = "";
 $MyErr = "";
-
-
 
 if (isset($_POST['btnCont'])) {
 

@@ -1,5 +1,6 @@
 <?php
 $title = "Registration Form";
+include 'header.php';
 include 'header_2.php'?>
 
 <form method="post" action="header .php">
