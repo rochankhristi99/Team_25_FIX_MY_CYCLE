@@ -55,7 +55,7 @@ List the database tables that are part of your project.
 - Table 2 (Created By Keya Rabaya): Login_Table
 - Table 3 (Created By Rochan Khristi): ServiceBooking_Table
 - Table 4 (Created By Neeru Sisodiya): PaymentCards_Table
-- Table 5 (Created By): Payment_Table
+- Table 5 (Created By Neeru Sisodiya): Payment_Table
 
 > Include the ER Diagram of the database. 
 
@@ -68,9 +68,8 @@ List and describe any forms that have been created as part of your project. Incl
 
 - Form 1: (Desgin by Mudathir and Code by Rochan): Registration Form: Validations Applied
 - Form 2: (Created By Keya Rabaya): Login Form:  Validations Applied
-- Form 3: (Created By Rochan Khristi): Validations Applied
+- Form 3: (Created By Rochan Khristi):Service Booking: Validations Applied
 - Form 4: (Created By Neeru): Payment Form:  Validations Applied
-- View Page 5: (Created By): View Booking Receipt after Successfull Payment: Validations Applied
 
 ---
 
@@ -122,7 +121,7 @@ Note : Might be change....
   - [X] Coding Part (Service Booking)
 
 # Neeru Sisodiya 
-- [ ] Payment For Service Booking.
+- [X] Payment For Service Booking.
   - [x] Table Design (payment_cards)
   - [x] Form Design
   - [X] Validations
