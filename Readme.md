@@ -28,22 +28,22 @@ In this section, list and describe the features or functionality that you are wo
 ### Feature 1
 
 To get started, users sign up by providing some basic information about themselves. 
-Provide links to related code files (github) & <a href='http://shell.hamk.fi/~bbcap23_25/Project_work/Team_25_FIX_MY_CYCLE/home.php'>Login Page</a>.
+[GitHub-Registration Page](https://github.com/rochankhristi99/Team_25_FIX_MY_CYCLE/blob/main/RegForm.php) & <a href='http://shell.hamk.fi/~bbcap23_25/Project_work/Team_25_FIX_MY_CYCLE/RegForm.php'>Sign Up Page</a>.
 
 ### Feature 2
 
 Once users have an account, they can access it by simply entering their username and password. Once logged in, they can view their profile details and make any necessary updates to their service booking information.
-Provide links to related code files (github) & link to the feature (shell.hamk.fi).
+[GitHub-Login Page (login code is in header.php)](https://github.com/rochankhristi99/Team_25_FIX_MY_CYCLE/blob/main/header.php) & <a href='http://shell.hamk.fi/~bbcap23_25/Project_work/Team_25_FIX_MY_CYCLE/home.php'>Login Page</a>
 
 ### Feature 3
 
 Users can easily request a cycle service by selecting their preferred date and time, specifying the type of service they require, and providing their address and contact information. 
-Provide links to related code files (github) & link to the feature (shell.hamk.fi).
+[GitHub-Service Booking Page (two pages : service_booking and service_booking2)](https://github.com/rochankhristi99/Team_25_FIX_MY_CYCLE/blob/main/service_booking.php) & <a href='http://shell.hamk.fi/~bbcap23_25/Project_work/Team_25_FIX_MY_CYCLE/service_booking.php'>Service Booking Page</a>.
 
 ### Feature 4
 
 After completing the service booking form, users proceed to make the payment for their requested service. Upon successful payment, they receive a receipt as confirmation of their booking.
-Provide links to related code files (github) & link to the feature (shell.hamk.fi).
+[GitHub-Payment Page](https://github.com/rochankhristi99/Team_25_FIX_MY_CYCLE/blob/main/service_booking.php) & <a href='http://shell.hamk.fi/~bbcap23_25/Project_work/Team_25_FIX_MY_CYCLE/payment.php'>Payment Page</a>.
 
 ---
 
@@ -59,17 +59,18 @@ List the database tables that are part of your project.
 
 > Include the ER Diagram of the database. 
 
+![ER Diagram](img/Screenshot(313).png) 
 ---
 
 ## Created Forms
 
 List and describe any forms that have been created as part of your project. Include details about the purpose of each form and any validation logic.
 
-- Form 1: (Desgin by Mudathir and Code by Rochan): Registration Form: Link to the related code file (github) | Link to the form (shell.hamk.fi). | Validations Applied
-- Form 2: (Created By Keya Rabaya): Login Form: Link to the related code file (github) | Link to the form (shell.hamk.fi).  | Validations Applied
-- Form 3: (Created By Rochan Khristi): Service Booking Form: Link to the related code file (github) | Link to the form (shell.hamk.fi).  | Validations Applied
-- Form 4: (Created By Neeru): Payment Form: Link to the related code file (github) | Link to the form (shell.hamk.fi).  | Validations Applied
-- View Page 5: (Created By): View Booking Receipt after Successfull Payment: Link to the related code file (github) | Link to the form (shell.hamk.fi).  | Validations Applied
+- Form 1: (Desgin by Mudathir and Code by Rochan): Registration Form: Validations Applied
+- Form 2: (Created By Keya Rabaya): Login Form:  Validations Applied
+- Form 3: (Created By Rochan Khristi): Validations Applied
+- Form 4: (Created By Neeru): Payment Form:  Validations Applied
+- View Page 5: (Created By): View Booking Receipt after Successfull Payment: Validations Applied
 
 ---
 
@@ -77,11 +78,11 @@ List and describe any forms that have been created as part of your project. Incl
 
 List any tables that you have created in the project work
 
-- Table 1 (Created By Mudathir): Registration_Table | Link to the related code file (github) | Link to the table (shell.hamk.fi).
-- Table 2 (Created By Keya Rabaya): Login_Table | Link to the related code file (github) | Link to the table (shell.hamk.fi).
-- Table 3 (Created By Rochan Khristi): ServiceBooking_Table | Link to the related code file (github) | Link to the table (shell.hamk.fi).
-- Table 4 (Created By Neeru): PaymentCards_Table | Link to the related code file (github) | Link to the table (shell.hamk.fi).
-- Table 5 (Created By Neeru): Payment_Table | Link to the related code file (github) | Link to the table (shell.hamk.fi).
+- Table 1 (Created By Mudathir): Registration_Table |.
+- Table 2 (Created By Keya Rabaya): Login_Table.
+- Table 3 (Created By Rochan Khristi): ServiceBooking_Table.
+- Table 4 (Created By Neeru): PaymentCards_Table.
+- Table 5 (Created By Neeru): Payment_Table.
 
 ---
 
