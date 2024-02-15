@@ -220,6 +220,7 @@ $conn->close();
         }
     }
     document.getElementById("inputContact").addEventListener("input", validateContact);
+
 </script>   
 
 <?php

@@ -128,7 +128,7 @@ if (isset($_POST['login_btn'])) {
                             </a>
                         </li> -->
                         
-                        <li class="nav-item" id="userDropdown">
+                        <li class="nav-item" id="userDropdown" style="margin-top: -7px;">
                             <a class="nav-link" href="#" onclick="toggleDropdown()">
                                 <img class="user_logo" src="img/user.png" />
                                 <?php echo strtoupper($_SESSION["useremail"]); ?>
