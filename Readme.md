@@ -28,7 +28,7 @@ In this section, list and describe the features or functionality that you are wo
 ### Feature 1
 
 To get started, users sign up by providing some basic information about themselves. 
-Provide links to related code files (github) & link to the feature (shell.hamk.fi).
+Provide links to related code files (github) & <a href='http://shell.hamk.fi/~bbcap23_25/Project_work/Team_25_FIX_MY_CYCLE/home.php'>Login Page</a>.
 
 ### Feature 2
 
