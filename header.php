@@ -1,10 +1,9 @@
 <?php
-@session_start(); 
+@session_start();
 $loginErr = "";
 include 'db.php';
 // Check if form is submitted
-if(isset($_POST['login_btn']))
-{
+if (isset($_POST['login_btn'])) {
     $email = $_POST['txtEmail'];
     $pswd = $_POST['txtPassword'];
     $result = mysqli_query($conn, "SELECT * FROM login_table WHERE email_id= '$email' AND password= '$pswd' ");
@@ -13,10 +12,10 @@ if(isset($_POST['login_btn']))
         if ($row) {
             $username = $row['email_id'];
             $_SESSION["useremail"] = $username;
-            $regId= $row['reg_id_fk'];
+            $regId = $row['reg_id_fk'];
             $_SESSION["regId"] = $regId;
             echo "<script>window.location.href = 'home.php';</script>";
-           
+
         } else {
             //$loginErr = "Username or password is incorrect";
             echo "<script>";
@@ -50,6 +49,7 @@ if(isset($_POST['login_btn']))
         .error {
             color: red;
         }
+
     </style>
 </head>
 
@@ -76,7 +76,8 @@ if(isset($_POST['login_btn']))
                         <div class="col-12">
                             <label class="f-label">Password*</label>
                             <input type="password" name="txtPassword" class="f-input" id="txtPassword"
-                                placeholder="Password" style="margin-bottom: 30px;" maxlength="12" minlength="6" required>
+                                placeholder="Password" style="margin-bottom: 30px;" maxlength="12" minlength="6"
+                                required>
                             <span id="passwordError" class="error"></span>
                             <span class="error" id="error">
                                 <?php echo $loginErr; ?>
@@ -120,15 +121,29 @@ if(isset($_POST['login_btn']))
                     <?php
                     if (isset($_SESSION["useremail"])) {
                         ?>
-                        <li class="nav-item">
-                            <a class="nav-link" style="padding-top: unset;" href="index.php">
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" style="padding-top: unset;" href="profile.php">
+                                <img class="user_logo" src="img/user.png" />
+                                <?php /* echo strtoupper($_SESSION["useremail"]);*/ ?>
+                            </a>
+                        </li> -->
+                        
+                        <li class="nav-item" id="userDropdown">
+                            <a class="nav-link" href="#" onclick="toggleDropdown()">
                                 <img class="user_logo" src="img/user.png" />
                                 <?php echo strtoupper($_SESSION["useremail"]); ?>
                             </a>
+                            <div class="dropdown-menu" id="dropdownContent">
+                                <a class="dropdown-item" href="profile.php">Profile</a>
+                                <a class="dropdown-item" href="view_service.php">My Services</a>
+                                <!-- Add more dropdown items as needed -->
+                            </div>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php">LOGOUT</a>
                         </li>
+
                         <?php
                     } else {
                         ?>
@@ -178,4 +193,21 @@ if(isset($_POST['login_btn']))
                 break; // Once found, no need to continue loop
             }
         }
+
+
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("dropdownContent");
+            dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.nav-link')) {
+                var dropdownContent = document.getElementById("dropdownContent");
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                }
+            }
+        }
+
     </script>

@@ -1,39 +1,40 @@
 <?php
 include 'header.php';
 include 'db.php';
+
 $bookingErr = "";
 $date = $time = "";
 $MyErr = "";
 
 if (isset($_POST['btnCont'])) {
-
-    // Check if $_SESSION["useremail"] exists
+    // Check if user is logged in
     if (!isset($_SESSION["useremail"])) {
-        // Redirect or handle the case where user email is not set
-        $MyErr = "Please Login first to book service.";
+        $MyErr = "Please log in first to book a service.";
     } else {
-
         $date = $_POST['serv_date'];
         $time = $_POST['serv_time'];
 
-        // Check if there are already more than three records with the same date and time
-        $sql = "SELECT COUNT(*) as count FROM servicebooking_table WHERE service_date = ? AND service_time = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $date, $time);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        $count = $row['count'];
+        // Check if the time slot is available
+        $sql = "SELECT COUNT(*) as count FROM servicebooking_table WHERE service_date = '$date' AND service_time = '$time'";
+        $result = $conn->query($sql);
 
-        if ($count >= 3) {
-            $bookingErr = "Please select another time or date. This time slot is already booked.";
+        if ($result) {
+            $count = $result->fetch_assoc()['count'];
+
+            if ($count >= 3) {
+                $bookingErr = "Please choose another time or date. This slot is already booked.";
+            } else {
+                // Redirect to the next page if the slot is available
+                echo "<script>window.location.href='service_booking2.php?service_date=$date&service_time=$time';</script>";
+                exit();
+            }
         } else {
-            // Proceed to the next page if the time slot is available
-            echo "<script>window.location.href = 'service_booking2.php?service_date=$date&service_time=$time';</script>";
-            exit();
+            // Handle query error if necessary
+            echo "Error executing query: " . $conn->error;
         }
     }
 }
+
 $conn->close();
 ?>
 

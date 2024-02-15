@@ -39,7 +39,10 @@
 
 </div>
 <!-- Bootstrap Javascript -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/t1fRCeF0o3uq9bP5RqLyZJKr5S/Ja/7p2wGFM=" crossorigin="anonymous"></script>
+
 <script src="bootstrap/js/bootstrap.min.js"></script>
+
      <script src="css/rochan.js"></script> 
 </body>
 </html>
