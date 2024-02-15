@@ -25,15 +25,18 @@ if (isset($_POST['submitBooking'])) {
     $contact_no = $_POST['contact_no'];
     $email_id = $_POST['email_id'];
     $specific_issue = $_POST['specific_issue'];
-    $payment_status = 0;
+    $payment_status = "Pending";
     $regId=$_SESSION["regId"];
     // Insert data into database
     $sql = "INSERT INTO servicebooking_table(service_type, service_date, service_time, first_name, last_name, address, city, state, pincode, contact_no, email_id, specific_issue, payment_status,reg_id_fk) 
     VALUES('$service_type', '$service_date', '$service_time', '$first_name', '$last_name', '$address', '$city', '$state', '$pincode', '$contact_no', '$email_id', '$specific_issue', '$payment_status','$regId')";
 
     if (mysqli_query($conn, $sql)) {
+        $bookingId = mysqli_insert_id($conn);
         //$bookingErr = "<script>alert('Service Booked Successfully')</script>";
-        echo "<script>window.location.href = 'payment.php';</script>";
+        echo "<script>window.location.href = 'payment.php?id=$bookingId';</script>";
+
+        
     } else {
         echo "Error inserting record: " . mysqli_error($conn);
     }
