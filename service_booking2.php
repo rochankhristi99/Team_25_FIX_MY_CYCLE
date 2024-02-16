@@ -156,7 +156,7 @@ $conn->close();
                     <div class="col-12">
                         <label for="inputAddress" class="f-label">CONTACT*</label>
                         <input type="number" name="contact_no"  class="f-input myInp" id="inputContact" placeholder="Contact">
-                        <p id="contactError"></p>
+                        <p id="contactError" maxlength="13" minlength="10"></p>
                     </div>
 
                     <div class="col-12">
@@ -208,8 +208,8 @@ $conn->close();
     }
 
     function validateContact() {
-        const contact = document.getElementById('inputContact').value;
-        const contactError = document.getElementById('contactError');
+        const contact = document.getElementById('inputContact2').value;
+        const contactError = document.getElementById('contactError2');
 
         if (contact === "" || !contact.includes("+")) {
             contactError.innerHTML = "Include the country code";
@@ -219,7 +219,8 @@ $conn->close();
             return true;
         }
     }
-    document.getElementById("inputContact").addEventListener("input", validateContact);
+
+    document.getElementById("inputContact2").addEventListener("input", validateContact);
 
 </script>   
 

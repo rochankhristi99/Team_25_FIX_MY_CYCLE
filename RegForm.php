@@ -68,36 +68,36 @@ if (isset($_POST['submitReg'])) {
                 <div class="col-12">
                     <label for="inputeUsername" class="f-label">USERNAME*</label>
                     <input type="text" name="username" class="f-input valid" id="reg_id" placeholder="Username">
-                    <p id="Registration_idError">
+                    <p id="Registration_idError" required>
                 </div>
 
                 <div class="col-md-6">
                     <label for="inputEmail4" class="f-label">FULL NAME*</label>
                     <input type="text" name="first_name" class="f-input valid" placeholder="First Name" id="f_name">
-                    <p id="fnameError"></p>
+                    <p id="fnameError" required></p>
                 </div>
 
                 <div class="col-md-6">
                     <label for="inputEmail4" class="f-label"><br></label>
                     <input type="text" name="last_name" class="f-input valid" placeholder="Last Name" id="l_name">
-                    <p id="lnameError"></p>
+                    <p id="lnameError" required></p>
                 </div>
 
                 <div class="col-12">
                     <label for="inputAddress" class="f-label">EMAIL*</label>
-                    <input type="email" name="email" class="f-input" id="email" placeholder="Email">
+                    <input type="email" name="email" class="f-input" id="email" placeholder="Email" required>
                 </div>
 
                 <div class="col-12">
                     <label for="inputAddress" class="f-label">CONTACT*</label>
                     <input type="number" name="contact_no" class="f-input" id="contact" placeholder="Contact">
-                    <p id="contactError"></p>
+                    <p id="contactError" required></p>
                 </div>
 
                 <div class="col-12">
                     <label for="inputAddress" class="f-label">PASSWORD*</label>
                     <input type="password" name="password" class="f-input" id="password" placeholder="Password">
-                    <p id="passwordError"></p><br>
+                    <p id="passwordError" required></p><br>
                 </div>
 
 
@@ -105,13 +105,13 @@ if (isset($_POST['submitReg'])) {
                     <label for="inputAddress" class="f-label">CONFIRM PASSWORD*</label>
                     <input type="password" name="confirm_password" class="f-input" id="confpassword"
                         placeholder="Confirm Password">
-                    <p id="confpasswordError"></p><br>
+                    <p id="confpasswordError" required></p><br>
                 </div>
 
                 <div class="col-12 mb-5">
                     <center>
 
-                        <button type="submit" name="submitReg" class="btn btn-primary btn-lg w-50 mt-5">Book</button>
+                        <button type="submit" name="submitReg" class="btn btn-primary btn-lg w-50 mt-5">Submit</button>
 
                     </center>
                 </div>

@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql = "INSERT INTO payment (card_holder_name, card_number, payment_amount, payment_date, servicebooking_id_fk, reg_id_fk) VALUES ('$card_holder_name', '$card_number', '$payment_amount', NOW(), '$bookingId', '$regId')";
 
             if ($conn->query($sql) === TRUE) {
+              $paymentId = mysqli_insert_id($conn);
                 // Update payment_status in 'servicebooking' table
                 $updateSql = "UPDATE servicebooking_table SET payment_status = 'Paid' WHERE servicebooking_id = '$bookingId'";
 
@@ -49,6 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="alert alert-success alert-dismissible fade show" role="alert">
       <strong>Done..</strong>
       <?php echo $MyErr; ?>
+      <br>
+      <a href="payment_receipt.php?id=<?php $paymentId ?>">View Receipt</a>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
