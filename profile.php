@@ -2,7 +2,16 @@
 include 'header.php';
 include 'db.php';
 
-$MyMsg = '';
+
+if (isset($_GET['upd'])) {
+    if ($_GET['upd'] == 'true') {
+        $MyMsg = "Your information is updated Successfully.";
+    } else {
+        $MyMsg = '';
+    }
+}
+
+//$MyMsg = '';
 $a = $_SESSION["regId"];
 $result = mysqli_query($conn, "SELECT * FROM registration_table WHERE registration_id= '$a'");
 $row = mysqli_fetch_array($result);
@@ -17,11 +26,12 @@ if (isset($_POST['submitUpdate'])) {
 
     $query = mysqli_query($conn, "UPDATE registration_table set username='$uname', first_name='$fname', last_name='$lname',contact_no='$contact' where registration_id='$a'");
     if ($query) {
-        $MyMsg = "Your information is updated Successfully.";
-
+        //$MyMsg = "Your information is updated Successfully.";
+        echo "<script>window.location.href = 'profile.php?upd=true';</script>";
     } else {
 
-        echo "Error inserting record into registration table: " . mysqli_error($conn);
+       // echo "Error inserting record into registration table: " . mysqli_error($conn);
+       echo "<script>window.location.href = 'Errorpage.php';</script>";
     }
 }
 ?>
@@ -58,28 +68,28 @@ if (isset($_POST['submitUpdate'])) {
                     <label for="inputAddress" class="f-label">USERNAME*</label>
                     <input type="text" name="uname" value="<?php echo $row['username']; ?>" class="f-input"
                         id="inputUsername" placeholder="Username">
-                        <p id="Registration_idError">
+                    <p id="Registration_idError">
                 </div>
 
                 <div class="col-md-6">
                     <label for="inputEmail4" class="f-label">FULL NAME*</label>
                     <input type="text" name="fname" value="<?php echo $row['first_name']; ?>" class="f-input"
                         placeholder="First Name" id="inputFirstname">
-                        <p id="fnameError"></p>
+                    <p id="fnameError"></p>
                 </div>
 
                 <div class="col-md-6">
                     <label for="inputEmail4" class="f-label"><br></label>
                     <input type="text" name="lname" value="<?php echo $row['last_name']; ?>" class="f-input"
                         placeholder="Last Name" id="inputLastname">
-                        <p id="lnameError"></p>
+                    <p id="lnameError"></p>
                 </div>
 
                 <div class="col-12">
                     <label for="inputAddress" class="f-label">Contact*</label>
                     <input type="text" name="contactno" value="<?php echo $row['contact_no']; ?>" class="f-input"
                         id="inputContact" placeholder="Contact">
-                        <p id="contactError"></p>
+                    <p id="contactError"></p>
                 </div>
 
                 <div class="col-12">

@@ -1,43 +1,49 @@
 <?php
 @session_start();
 include 'header.php';
-include 'db.php'; // Include your database connection file
-$MyMsg='';
+include 'db.php'; 
+$MyMsg = '';
 
 if (isset($_POST['submitReg'])) {
 
-    // Retrieve form data
     $username = $_POST['username'];
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $email = $_POST['email'];
     $contact_no = $_POST['contact_no'];
-    // $password =  $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
-    // Insert data into registration table
-    $insert_reg_query = "INSERT INTO registration_table (username, first_name, last_name, email_id, contact_no) VALUES ('$username', '$first_name', '$last_name', '$email', '$contact_no')";
+    $check_email = "SELECT * FROM login_table WHERE email_id = '$email'";
+    $result = mysqli_query($conn, $check_email);
 
-    if (mysqli_query($conn, $insert_reg_query)) {
-        // Retrieve the registration ID of the newly inserted record
-        $reg_id = mysqli_insert_id($conn);
-
-        // Insert data into login table
-        $insert_login_query = "INSERT INTO login_table (email_id, password, reg_id_fk) VALUES ('$email', '$confirm_password', '$reg_id')";
-        if (mysqli_query($conn, $insert_login_query)) {
-            $MyMsg = "Registration successful.";
-      
-        } else {
-            echo "Error inserting record into login table: " . mysqli_error($conn);
-        }
+    if (mysqli_num_rows($result) > 0) {
+        $MyErr = "Email already exists. Please choose a different email.";
     } else {
-        echo "Error inserting record into registration table: " . mysqli_error($conn);
+        $insert_reg_query = "INSERT INTO registration_table (username, first_name, last_name, email_id, contact_no) VALUES ('$username', '$first_name', '$last_name', '$email', '$contact_no')";
+
+        if (mysqli_query($conn, $insert_reg_query)) {
+            $reg_id = mysqli_insert_id($conn);
+
+            $insert_login_query = "INSERT INTO login_table (email_id, password, reg_id_fk) VALUES ('$email', '$confirm_password', '$reg_id')";
+            if (mysqli_query($conn, $insert_login_query)) {
+                $MyMsg = "Registration successful.";
+
+            } else {
+               // echo "Error inserting record into login table: " . mysqli_error($conn);
+               echo "<script>window.location.href = 'Errorpage.php';</script>";
+
+            }
+        } else {
+           // echo "Error inserting record into registration table: " . mysqli_error($conn);
+           echo "<script>window.location.href = 'Errorpage.php';</script>";
+        }
     }
 
     // Close database connection
     mysqli_close($conn);
 }
 ?>
+
 
 <style>
     p {
@@ -57,30 +63,37 @@ if (isset($_POST['submitReg'])) {
 
     <?php } ?>
 
+    <?php if (!empty($MyErr)) { ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Opps...</strong>
+            <?php echo $MyErr; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    <?php } ?>
 
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
 
-            <form class="row g-3" name="regForm" action="" method="post">
-
+            <form class="row g-3" name="regForm" action="" method="post" onsubmit="return validateForm()">
 
                 <div class="col-12">
                     <label for="inputeUsername" class="f-label">USERNAME*</label>
-                    <input type="text" name="username" class="f-input valid" id="reg_id" placeholder="Username">
-                    <p id="Registration_idError" required>
+                    <input type="text" name="username" class="f-input valid" id="reg_id" placeholder="Username" required>
+                    <p id="Registration_idError"></p>
                 </div>
 
                 <div class="col-md-6">
                     <label for="inputEmail4" class="f-label">FULL NAME*</label>
-                    <input type="text" name="first_name" class="f-input valid" placeholder="First Name" id="f_name">
-                    <p id="fnameError" required></p>
+                    <input type="text" name="first_name" class="f-input valid" placeholder="First Name" id="f_name" required>
+                    <p id="fnameError"></p>
                 </div>
 
                 <div class="col-md-6">
                     <label for="inputEmail4" class="f-label"><br></label>
-                    <input type="text" name="last_name" class="f-input valid" placeholder="Last Name" id="l_name">
-                    <p id="lnameError" required></p>
+                    <input type="text" name="last_name" class="f-input valid" placeholder="Last Name" id="l_name" required>
+                    <p id="lnameError"></p>
                 </div>
 
                 <div class="col-12">
@@ -90,22 +103,23 @@ if (isset($_POST['submitReg'])) {
 
                 <div class="col-12">
                     <label for="inputAddress" class="f-label">CONTACT*</label>
-                    <input type="number" name="contact_no" class="f-input" id="contact" placeholder="Contact">
-                    <p id="contactError" required></p>
+                    <input type="text" name="contact_no" maxlength="13" minlength="13" class="f-input" id="contact"
+                        placeholder="Contact" required>
+                    <p id="contactError"></p>
                 </div>
 
                 <div class="col-12">
                     <label for="inputAddress" class="f-label">PASSWORD*</label>
-                    <input type="password" name="password" class="f-input" id="password" placeholder="Password">
-                    <p id="passwordError" required></p><br>
+                    <input type="password" name="password" class="f-input" id="password" placeholder="Password" required>
+                    <p id="PaswdError"></p>
                 </div>
 
 
                 <div class="col-12">
                     <label for="inputAddress" class="f-label">CONFIRM PASSWORD*</label>
                     <input type="password" name="confirm_password" class="f-input" id="confpassword"
-                        placeholder="Confirm Password">
-                    <p id="confpasswordError" required></p><br>
+                        placeholder="Confirm Password" required>
+                    <p id="confpasswordError"></p>
                 </div>
 
                 <div class="col-12 mb-5">
@@ -185,8 +199,11 @@ if (isset($_POST['submitReg'])) {
         const contact = document.getElementById('contact').value;
         const contactError = document.getElementById('contactError');
 
-        if (contact === "" || !contact.includes("+")) {
-            contactError.innerHTML = "Include the country code";
+        // Regular expression to match a string that starts with a '+', followed by digits
+        var contactRegex = /^\+\d+$/;
+
+        if (contact === "" || !contactRegex.test(contact)) {
+            contactError.innerHTML = "Contact number must be start with (+ country code) and only digits e.g. +358 XX XXXXXXX";
             return false;
         } else {
             contactError.innerHTML = "";
@@ -194,19 +211,21 @@ if (isset($_POST['submitReg'])) {
         }
     }
 
+
     // function to validate password
     function validatePassword() {
-        const password = document.getElementById('password').value;
-        const passwordError = document.getElementById('passwordError');
-
-        if (password.length < 6 || password.length > 20) {
-            passwordError.innerHTML = "Password must be 6 - 20 characters";
-            return false;
-        } else {
-            passwordError.innerHTML = "";
-            return true;
-        }
+        debugger
+    const password = document.getElementById('password').value;
+    const passwordError = document.getElementById('PaswdError');
+    var pswdRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}/;
+    if (!pswdRegex.test(password)) {
+        passwordError.innerHTML = "Must contain at least one number, one uppercase and lowercase letter, and be between 6 and 12 characters long";
+        return false;
+    } else {
+        passwordError.innerHTML = "";
+        return true;
     }
+}
 
     function validateConfirmPassword() {
         const password = document.getElementById('password').value;
@@ -228,9 +247,33 @@ if (isset($_POST['submitReg'])) {
     document.getElementById("l_name").addEventListener("input", validateLname);
     document.getElementById("email").addEventListener("input", validateEmail);
     document.getElementById("password").addEventListener("input", validatePassword);
-    document.getElementById("confpassword").addEventListener("input", validateConfirmPassword);
-    // document.getElementById("contact").addEventListener("input", validateContact);
 
+    document.getElementById("confpassword").addEventListener("input", validateConfirmPassword);
+    document.getElementById("contact").addEventListener("input", validateContact);
+
+
+    function validateForm() {
+        debugger
+        // Perform all validation checks
+        var isUsernameValid = validateUsername();
+        var isFirstnameValid = validateFname();
+        var isLastnameValid = validateLname();
+        var isEmailValid = validateEmail();
+        var isContactValid = validateContact();
+        var isPasswordValid = validatePassword();
+        var isConfirmPasswordValid = validateConfirmPassword();
+
+        // Check if all validations pass
+        if (isUsernameValid && isFirstnameValid && isLastnameValid && isEmailValid && isContactValid && isPasswordValid && isConfirmPasswordValid) {
+            // All validations passed, allow form submission
+            debugger
+            return true;
+        } else {
+            debugger
+            // At least one validation failed, prevent form submission
+            return false;
+        }
+    }
 </script>
 
 <?php include 'footer.php' ?>
