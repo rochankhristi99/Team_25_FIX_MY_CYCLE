@@ -30,12 +30,12 @@ if (isset($_POST['submitReg'])) {
 
             } else {
                // echo "Error inserting record into login table: " . mysqli_error($conn);
-               echo "<script>window.location.href = 'Errorpage.php';</script>";
+               echo "<script>window.location.href = 'ErrorPage.php';</script>";
 
             }
         } else {
            // echo "Error inserting record into registration table: " . mysqli_error($conn);
-           echo "<script>window.location.href = 'Errorpage.php';</script>";
+           echo "<script>window.location.href = 'ErrorPage.php';</script>";
         }
     }
 
@@ -186,18 +186,18 @@ if (isset($_POST['submitReg'])) {
     }
 
     // function to validate email
-    function validateEmail() {
-        const email = document.getElementById('email').value;
-        const emailError = document.getElementById('emailError');
+    // function validateEmail() {
+    //     const email = document.getElementById('email').value;
+    //     const emailError = document.getElementById('emailError');
 
-        if (email === "" || !email.includes("@")) {
-            emailError.innerHTML = "Please enter a valid email address";
-            return false;
-        } else {
-            emailError.innerHTML = "";
-            return true;
-        }
-    }
+    //     if (email === "" || !email.includes("@")) {
+    //         emailError.innerHTML = "Please enter a valid email address";
+    //         return false;
+    //     } else {
+    //         emailError.innerHTML = "";
+    //         return true;
+    //     }
+    // }
 
     // function to validate Contact 
     function validateContact() {
@@ -249,7 +249,7 @@ if (isset($_POST['submitReg'])) {
     document.getElementById("reg_id").addEventListener("input", validateUsername);
     document.getElementById("f_name").addEventListener("input", validateFname);
     document.getElementById("l_name").addEventListener("input", validateLname);
-    document.getElementById("email").addEventListener("input", validateEmail);
+    // document.getElementById("email").addEventListener("input", validateEmail);
     document.getElementById("password").addEventListener("input", validatePassword);
 
     document.getElementById("confpassword").addEventListener("input", validateConfirmPassword);
@@ -262,13 +262,13 @@ if (isset($_POST['submitReg'])) {
         var isUsernameValid = validateUsername();
         var isFirstnameValid = validateFname();
         var isLastnameValid = validateLname();
-        var isEmailValid = validateEmail();
+       // var isEmailValid = validateEmail();
         var isContactValid = validateContact();
         var isPasswordValid = validatePassword();
         var isConfirmPasswordValid = validateConfirmPassword();
 
         // Check if all validations pass
-        if (isUsernameValid && isFirstnameValid && isLastnameValid && isEmailValid && isContactValid && isPasswordValid && isConfirmPasswordValid) {
+        if (isUsernameValid && isFirstnameValid && isLastnameValid /*&& isEmailValid*/ && isContactValid && isPasswordValid && isConfirmPasswordValid) {
             return true;
         } else {
 

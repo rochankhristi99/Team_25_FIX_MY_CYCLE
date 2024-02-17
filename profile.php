@@ -37,7 +37,7 @@ if (isset($_POST['submitUpdate'])) {
     } else {
 
         // echo "Error inserting record into registration table: " . mysqli_error($conn);
-        echo "<script>window.location.href = 'Errorpage.php';</script>";
+        echo "<script>window.location.href = 'ErrorPage.php';</script>";
     }
 }
 ?>
