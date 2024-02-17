@@ -305,6 +305,13 @@ body {
 }
 
 
+.toggle-eye {
+    position: absolute;
+    right: 24px;
+    top: 51%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
 
 @media screen and (max-width: 1024px) {

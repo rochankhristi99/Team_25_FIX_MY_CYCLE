@@ -46,18 +46,18 @@ if (isset($_POST['submitUpdate'])) {
 
     <div class="row">
         <div class="col-lg-12">
-                <?php
-                include 'db.php';
+            <?php
+            include 'db.php';
 
-                // SQL query to retrieve data from the 'service' table
-                $sql = "SELECT * FROM servicebooking_table";
+            // SQL query to retrieve data from the 'service' table
+            $sql = "SELECT * FROM servicebooking_table";
 
-                // Execute the SQL query and store the result
-                $result = $conn->query($sql);
+            // Execute the SQL query and store the result
+            $result = $conn->query($sql);
 
-                // Check if there are any results
-                if ($result->num_rows > 0) {
-                    echo "<table class='table'>
+            // Check if there are any results
+            if ($result->num_rows > 0) {
+                echo "<table class='table'>
         <thead>
             <tr>
 
@@ -74,9 +74,9 @@ if (isset($_POST['submitUpdate'])) {
         </thead>
         <tbody>";
 
-                    // Loop through the result set and display data in rows
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>
+                // Loop through the result set and display data in rows
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>
 
             <td>{$row['service_date']}</td>
             <td>{$row['service_time']}</td>
@@ -88,23 +88,28 @@ if (isset($_POST['submitUpdate'])) {
             <td>{$row['specific_issue']}</td>
             <td><a class='btn btn-info' href='edit_service.php?id={$row['servicebooking_id']}'>Update/Delete</a></td>
         </tr>";
-                    }
-
-                    echo "</tbody></table>";
-                } else {
-                    // Display a message if no results are found
-                    echo "No results";
                 }
 
-                // Close the connection when done
-                $conn->close();
+                echo "</tbody></table>";
+            } else {
                 ?>
+
+                <div class="alert alert-secondary alert-dismissible fade show" role="alert" id="valDateTime">
+                    <strong>Empty</strong>
+                    You don't have any service booking.
+                </div>
+                <?php
+            }
+
+            // Close the connection when done
+            $conn->close();
+            ?>
 
 
 
 
         </div>
-       
+
     </div>
 
 

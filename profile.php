@@ -16,6 +16,8 @@ $a = $_SESSION["regId"];
 $result = mysqli_query($conn, "SELECT * FROM registration_table WHERE registration_id= '$a'");
 $row = mysqli_fetch_array($result);
 
+$result2 = mysqli_query($conn, "SELECT * FROM login_table WHERE reg_id_fk= '$a'");
+$row2 = mysqli_fetch_array($result2);
 
 if (isset($_POST['submitUpdate'])) {
 
@@ -23,23 +25,23 @@ if (isset($_POST['submitUpdate'])) {
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $contact = $_POST['contactno'];
+    $pswd = $_POST['inputPswd'];
 
     $query = mysqli_query($conn, "UPDATE registration_table set username='$uname', first_name='$fname', last_name='$lname',contact_no='$contact' where registration_id='$a'");
-    if ($query) {
+    
+    $query2 = mysqli_query($conn, "UPDATE login_table set password='$pswd' where reg_id_fk='$a'");
+    
+    if ($query && $query2) {
         //$MyMsg = "Your information is updated Successfully.";
         echo "<script>window.location.href = 'profile.php?upd=true';</script>";
     } else {
 
-       // echo "Error inserting record into registration table: " . mysqli_error($conn);
-       echo "<script>window.location.href = 'Errorpage.php';</script>";
+        // echo "Error inserting record into registration table: " . mysqli_error($conn);
+        echo "<script>window.location.href = 'Errorpage.php';</script>";
     }
 }
 ?>
-<style>
-    p {
-        color: red;
-    }
-</style>
+
 <!--Main Content Section Start-->
 <div class="body_sec">
 
@@ -61,35 +63,35 @@ if (isset($_POST['submitUpdate'])) {
         </div>
         <div class="col-lg-6">
 
-            <form class="row g-3" name="profile_form" action="" method="post">
+            <form class="row g-3" name="profile_form" action="" method="post" onsubmit="return validateForm()">
 
 
                 <div class="col-12">
                     <label for="inputAddress" class="f-label">USERNAME*</label>
                     <input type="text" name="uname" value="<?php echo $row['username']; ?>" class="f-input"
-                        id="inputUsername" placeholder="Username">
-                    <p id="Registration_idError">
+                        id="inputUsername" placeholder="Username" required>
+                    <p id="Registration_idError" class="text-danger">
                 </div>
 
                 <div class="col-md-6">
                     <label for="inputEmail4" class="f-label">FULL NAME*</label>
                     <input type="text" name="fname" value="<?php echo $row['first_name']; ?>" class="f-input"
-                        placeholder="First Name" id="inputFirstname">
-                    <p id="fnameError"></p>
+                        placeholder="First Name" id="inputFirstname" required>
+                    <p id="fnameError" class="text-danger"></p>
                 </div>
 
                 <div class="col-md-6">
                     <label for="inputEmail4" class="f-label"><br></label>
                     <input type="text" name="lname" value="<?php echo $row['last_name']; ?>" class="f-input"
-                        placeholder="Last Name" id="inputLastname">
-                    <p id="lnameError"></p>
+                        placeholder="Last Name" id="inputLastname" required>
+                    <p id="lnameError" class="text-danger"></p>
                 </div>
 
                 <div class="col-12">
                     <label for="inputAddress" class="f-label">Contact*</label>
                     <input type="text" name="contactno" value="<?php echo $row['contact_no']; ?>" class="f-input"
-                        id="inputContact" placeholder="Contact">
-                    <p id="contactError"></p>
+                        id="inputContact" placeholder="Contact" required>
+                    <p id="contactError" class="text-danger"></p>
                 </div>
 
                 <div class="col-12">
@@ -97,6 +99,18 @@ if (isset($_POST['submitUpdate'])) {
                     <input type="email" value="<?php echo $row['email_id']; ?>" class="f-input" id="inputEmail"
                         placeholder="Email" disabled>
                 </div>
+
+                <div class="col-12">
+                    <label for="inputPswd" class="f-label">Change Password*</label>
+                    <div class="password-input-container" style="position: relative;">
+                        <input type="password" value="<?php echo $row2['password']; ?>" class="f-input password" name="inputPswd" id="inputPswd">
+                        <span class="toggle-eye" onclick="togglePasswordVisibility()">
+                            <i id="eyeIcon" class="fa fa-eye eyeIcon"></i>
+                        </span>
+                    </div>
+                    <p id="PaswdError" class="text-danger"></p>
+                </div>
+
 
                 <div class="col-12 mb-5">
                     <center>
@@ -115,7 +129,24 @@ if (isset($_POST['submitUpdate'])) {
 
 </div>
 <!--Main Content Section End-->
+<!-- <script>
+    function togglePasswordVisibility() {
+        var input = document.getElementById("inputPswd");
+        var eyeIcon = document.getElementById("eyeIcon");
+
+        if (input.type === "password") {
+            input.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        } else {
+            input.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+    }
+</script> -->
 <script>
+
     // function to validate Username 
     function validateUsername() {
         const reg_id = document.getElementById('inputUsername').value;
@@ -163,8 +194,11 @@ if (isset($_POST['submitUpdate'])) {
         const contact = document.getElementById('inputContact').value;
         const contactError = document.getElementById('contactError');
 
-        if (contact === "" || !contact.includes("+")) {
-            contactError.innerHTML = "Include the country code";
+        // Regular expression to match a string that starts with a '+', followed by digits
+        var contactRegex = /^\+\d+$/;
+
+        if (contact === "" || !contactRegex.test(contact)) {
+            contactError.innerHTML = "Contact number must be start with (+ country code) and only digits e.g. +358 XX XXXXXXX";
             return false;
         } else {
             contactError.innerHTML = "";
@@ -172,15 +206,43 @@ if (isset($_POST['submitUpdate'])) {
         }
     }
 
-
-
+    // function to validate password
+    function validatePassword() {
+        debugger
+        const password = document.getElementById('inputPswd').value;
+        const passwordError = document.getElementById('PaswdError');
+        var pswdRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}/;
+        if (!pswdRegex.test(password)) {
+            passwordError.innerHTML = "Must contain at least one number, one uppercase and lowercase letter, and be between 6 and 12 characters long";
+            return false;
+        } else {
+            passwordError.innerHTML = "";
+            return true;
+        }
+    }
     // event listener for real time validation 
     document.getElementById("inputUsername").addEventListener("input", validateUsername);
     document.getElementById("inputFirstname").addEventListener("input", validateFname);
-    document.getElementById("inputeLastname").addEventListener("input", validateLname);
+    document.getElementById("inputLastname").addEventListener("input", validateLname);
+    document.getElementById("inputContact").addEventListener("input", validateContact);
+    document.getElementById("inputPswd").addEventListener("input", validatePassword);
 
-    //document.getElementById("contact").addEventListener("input", validateContact);
+    function validateForm() {
 
+        var isUsernameValid = validateUsername();
+        var isFirstnameValid = validateFname();
+        var isLastnameValid = validateLname();
+        var isContactValid = validateContact();
+        var isvalidatePassword = validatePassword();
+
+        if (isUsernameValid && isFirstnameValid && isLastnameValid && isContactValid && isvalidatePassword) {
+
+            return true;
+        } else {
+
+            return false;
+        }
+    }
 </script>
 
 <?php
