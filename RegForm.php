@@ -217,6 +217,7 @@ if (isset($_POST['submitReg'])) {
     }
 
 
+
     // function to validate password
     function validatePassword() {
         debugger
@@ -270,8 +271,8 @@ if (isset($_POST['submitReg'])) {
         // Check if all validations pass
         if (isUsernameValid && isFirstnameValid && isLastnameValid /*&& isEmailValid*/ && isContactValid && isPasswordValid && isConfirmPasswordValid) {
             return true;
-        } else {
-
+        } else
+         {
             return false;
         }
     }
