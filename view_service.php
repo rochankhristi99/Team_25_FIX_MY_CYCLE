@@ -48,73 +48,92 @@ if (isset($_POST['submitUpdate'])) {
         <div class="col-lg-12">
             <?php
             include 'db.php';
-
-            // SQL query to retrieve data from the 'service' table
-            $sql = "SELECT * FROM servicebooking_table";
-
-            // Execute the SQL query and store the result
+            $sql = "SELECT * FROM servicebooking_table where reg_id_fk='$a'";
             $result = $conn->query($sql);
 
-            // Check if there are any results
             if ($result->num_rows > 0) {
                 echo "<table class='table'>
-        <thead>
-            <tr>
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Service Date</th>
+                    <th>Service Time</th>
+                    <th>Service Type</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Contact No</th>
+                    <th>Email ID</th>
+                    <th>Specific Issue</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>";
 
-                <th>Service Date</th>
-                <th>Service Time</th>
-                <th>Service Type</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Contact No</th>
-                <th>Email ID</th>
-                <th>Specific Issue</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>";
+                foreach ($result as $row) 
+                {
+                    // if($row['service_status']=='Completed')
+                    // {
+                    //     echo "<tr>
+                    //     <td>{$row['service_status']}</td>
+                    //     <td>{$row['service_date']}</td>
+                    //     <td>{$row['service_time']}</td>
+                    //     <td>{$row['service_type']}</td>
+                    //     <td>{$row['first_name']}</td>
+                    //     <td>{$row['last_name']}</td>    
+                    //     <td>{$row['contact_no']}</td>
+                    //     <td>{$row['email_id']}</td>
+                    //     <td>{$row['specific_issue']}</td>
+                    //     <td><a class='btn btn-info' href='edit_service.php?id={$row['servicebooking_id']}'>Update/Delete</a></td>
+                    // </tr>";
+                    // }
+                  
+                        echo "<tr>";
+                        if($row['service_status']=='Completed')
+                        {
+                            echo  "<td class='text-success'>{$row['service_status']}</td>";
+                        }
+                        else
+                        {
+                            echo  "<td class='text-warning'>{$row['service_status']}</td>";
+                        }
+                
+                      echo "<td>{$row['service_date']}</td>
+                        <td>{$row['service_time']}</td>
+                        <td>{$row['service_type']}</td>
+                        <td>{$row['first_name']}</td>
+                        <td>{$row['last_name']}</td>    
+                        <td>{$row['contact_no']}</td>
+                        <td>{$row['email_id']}</td>
+                        <td>{$row['specific_issue']}</td>"; 
 
-                // Loop through the result set and display data in rows
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr>
-
-            <td>{$row['service_date']}</td>
-            <td>{$row['service_time']}</td>
-            <td>{$row['service_type']}</td>
-            <td>{$row['first_name']}</td>
-            <td>{$row['last_name']}</td>    
-            <td>{$row['contact_no']}</td>
-            <td>{$row['email_id']}</td>
-            <td>{$row['specific_issue']}</td>
-            <td><a class='btn btn-info' href='edit_service.php?id={$row['servicebooking_id']}'>Update/Delete</a></td>
-        </tr>";
+                    if($row['service_status']=='Completed')
+                    {
+                        echo "<td><button class='btn btn-info' disabled>Update/Delete</button></td>
+                        </tr>";
+                    }
+                    else
+                    {
+                        echo "<td><a class='btn btn-info' href='edit_service.php?id={$row['servicebooking_id']}'>Update/Delete</a></td>
+                        </tr>";
+                    }
+                      
+                    
+                  
                 }
 
                 echo "</tbody></table>";
             } else {
                 ?>
-
                 <div class="alert alert-secondary alert-dismissible fade show" role="alert" id="valDateTime">
                     <strong>Empty</strong>
                     You don't have any service booking.
                 </div>
                 <?php
             }
-
-            // Close the connection when done
             $conn->close();
             ?>
-
-
-
-
         </div>
-
     </div>
-
-
-
-
 </div>
 <!--Main Content Section End-->
 
