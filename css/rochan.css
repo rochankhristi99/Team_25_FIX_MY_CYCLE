@@ -352,12 +352,12 @@ body {
         padding: 10px;
     }
 
-    .table tr {
+    .Mytable tr {
         display: block;
         margin-bottom: 15px;
     }
 
-    .table td {
+    .Mytable td {
         display: block;
         width: 100%;
         box-sizing: border-box;

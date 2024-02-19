@@ -28,9 +28,10 @@ if (isset($_POST['submitBooking'])) {
     $specific_issue = $_POST['specific_issue'];
     $payment_status = "Pending";
     $regId = $_SESSION["regId"];
+    $uniqid = uniqid();
     // Insert data into database
-    $sql = "INSERT INTO servicebooking_table(service_type, service_date, service_time, first_name, last_name, address, city, state, pincode, contact_no, email_id, specific_issue, payment_status,reg_id_fk) 
-    VALUES('$service_type', '$service_date', '$service_time', '$first_name', '$last_name', '$address', '$city', '$state', '$pincode', '$contact_no', '$email_id', '$specific_issue', '$payment_status','$regId')";
+    $sql = "INSERT INTO servicebooking_table(service_type, service_date, service_time, first_name, last_name, address, city, state, pincode, contact_no, email_id, specific_issue, payment_status,reg_id_fk,uniqid) 
+    VALUES('$service_type', '$service_date', '$service_time', '$first_name', '$last_name', '$address', '$city', '$state', '$pincode', '$contact_no', '$email_id', '$specific_issue', '$payment_status','$regId','$uniqid')";
 
     if (mysqli_query($conn, $sql)) {
         $bookingId = mysqli_insert_id($conn);

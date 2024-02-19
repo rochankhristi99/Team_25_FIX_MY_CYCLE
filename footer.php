@@ -2,7 +2,7 @@
 <div class="bg_dark px-5 py-5 text-white">
 
     <h3 class="fw-bolder mb-5"> CONTACT US</h3>
-    <table class="table text-white">
+    <table class="Mytable text-white">
         <tr>
             <td>
                 Reach Us At
