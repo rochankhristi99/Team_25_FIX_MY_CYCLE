@@ -18,10 +18,10 @@ In this section, list and describe the features or functionality that you are wo
 - [X] Feature 1 (Mudathir): Registration. 
 - [X] Feature 2 (Keya Rabaya): Login.
   - [X] Sub-feature 1: View Profile
-  - [ ] Sub-feature 2: Update Booking Details.
+  - [X] Sub-feature 2: Update Booking Details.
 - [X] Feature 3 (Rochan Khristi): Service Booking.
 - [X] Feature 4 (Neeru): Payment For Service Booking.
-  - [ ] Sub-feature 1: View Booking Receipt.
+  - [X] Sub-feature 1: View Booking Receipt.
 
 > Add features as required.
 
@@ -92,7 +92,6 @@ Note : Might be change....
   - [X] Table Design (registration_table)
   - [X] Form Design
   - [X] Validations
-  - [X] Coding Part by Rochan Khrsti
 
 # Keya Rabaya 
 - [X] Login.
@@ -108,17 +107,26 @@ Note : Might be change....
 
 - [X] Update Booking Details.
   - [X] Form Design (Update Booking Details)
-  - [ ] Validations (Update Booking Details)
-  - [ ] Coding Part (Update Booking Details)
+  - [X] Validations (Update Booking Details)
+  - [X] Coding Part (Update Booking Details)
 
 # Rochan Khristi 
 - [x] Set Layout.
-        
+
+- [x] Registration
+  - [X] Solve validatoin issues and Coding Part by Rochan Khrsti
+
 - [X] Service Booking.
   - [x] Table Design (servicebooking_table)
   - [x] Form Design (Service Booking)
   - [X] Validations (Service Booking)
   - [X] Coding Part (Service Booking)
+
+- [X] View Booking Receipt
+  - [X] Page Design (Service Booking)
+  - [X] Coding Part (Service Booking)
+
+- [x] Solved Errors and Test Website.
 
 # Neeru Sisodiya 
 - [X] Payment For Service Booking.
@@ -127,6 +135,3 @@ Note : Might be change....
   - [X] Validations
   - [X] Coding Part
         
-- [ ] View Booking Receipt
-  - [ ] Page Design (Service Booking)
-  - [ ] Coding Part (Service Booking)
