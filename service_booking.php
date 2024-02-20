@@ -30,7 +30,8 @@ if (isset($_POST['btnCont'])) {
             }
         } else {
             // Handle query error if necessary
-            echo "Error executing query: " . $conn->error;
+            //echo "Error executing query: " . $conn->error;
+            echo "<script>window.location.href = 'ErrorPage.php';</script>";
         }
     }
 }
@@ -71,17 +72,18 @@ $conn->close();
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-            <form class="row g-3" name="bookingForm_1" action="" onsubmit="return validateForm()" method="post">
+            <!-- <form class="row g-3" name="bookingForm_1" action="" onsubmit="return validateForm()" method="post"> -->
+            <form class="row g-3" name="bookingForm_1" action="" method="post">
 
                 <div class="col-12">
                     <label for="inputAddress" class="f-label">Date*</label>
-                    <input type="date" name="serv_date" min="<?php echo date('Y-m-d'); ?>" class="f-input" id="inputDate" placeholder="DD/MM/YYYY">
+                    <input type="date" name="serv_date" min="<?php echo date('Y-m-d'); ?>" class="f-input" id="inputDate" required placeholder="DD/MM/YYYY">
                 </div>
 
                 <div class="col-md-12">
                     <label for="inputState" class="f-label">Time*</label>
-                    <select id="inputid" name="serv_time" id="inputTime" class="f-input">
-                        <option selected>Choose...</option>
+                    <select id="inputid" name="serv_time" id="inputTime" class="f-input" required>
+                        <option value="" selected>Choose...</option>
                         <option>10:00-12:00</option>
                         <option>12:00-14:00</option>
                         <option>14:00-16:00</option>
@@ -115,32 +117,33 @@ $conn->close();
 </div>
 
 <!--Main Content Section End-->
+
 <script>
 
-    function validateForm() {
-        debugger
-        // Get the Date and Time input fields
-         var dateInput = document.querySelector('input[name="serv_date"]');
-         var timeInput = document.querySelector('select[name="serv_time"]');
+    // function validateForm() {
+    //     debugger
+    //     // Get the Date and Time input fields
+    //      var dateInput = document.querySelector('input[name="serv_date"]');
+    //      var timeInput = document.querySelector('select[name="serv_time"]');
        
-        var valDateTimeDiv = document.getElementById('valDateTime');
+    //     var valDateTimeDiv = document.getElementById('valDateTime');
 
-        // Get the values of Date and Time
-        var dateValue = dateInput.value;
-        var timeValue = timeInput.value;
+    //     // Get the values of Date and Time
+    //     var dateValue = dateInput.value;
+    //     var timeValue = timeInput.value;
 
-        // Perform validation
-        var isValid = true;
+    //     // Perform validation
+    //     var isValid = true;
 
-        // Check if Date is not empty
-        if (!dateValue || timeValue === 'Choose...') {
-            debugger
-            isValid = false;
-            valDateTimeDiv.classList.remove('d-none');
-        }
+    //     // Check if Date is not empty
+    //     if (!dateValue || timeValue === 'Choose...') {
+    //         debugger
+    //         isValid = false;
+    //         valDateTimeDiv.classList.remove('d-none');
+    //     }
 
-        return isValid;
-    }
+    //     return isValid;
+    // }
 </script>
 
 <?php

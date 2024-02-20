@@ -6,11 +6,11 @@ include 'db.php';
 if (isset($_POST['login_btn'])) {
     $email = $_POST['txtEmail'];
     $pswd = $_POST['txtPassword'];
-    $result = mysqli_query($conn, "SELECT * FROM login_table WHERE email_id= '$email' AND password= '$pswd' ");
+    $result = mysqli_query($conn, "SELECT * FROM login_table WHERE (email_id= '$email' OR username='$email') AND password= '$pswd' ");
     if ($result) {
         $row = mysqli_fetch_array($result);
         if ($row) {
-            $username = $row['email_id'];
+            $username = $row['username'];
             $_SESSION["useremail"] = $username;
             $regId = $row['reg_id_fk'];
             $_SESSION["regId"] = $regId;
@@ -49,7 +49,6 @@ if (isset($_POST['login_btn'])) {
         .error {
             color: red;
         }
-
     </style>
 </head>
 
@@ -67,12 +66,11 @@ if (isset($_POST['login_btn'])) {
                     </div>
                     <div class="modal-body row">
                         <div class="col-12">
-                            <label class="f-label">Email*</label>
-                            <input type="email" name="txtEmail" class="f-input" id="txtEmail" placeholder="Email"
-                                style="margin-bottom: 6px;" required>
-                            <span id="emailError" class="error"></span><br><br>
+                            <label class="f-label">Username or Email*</label>
+                            <input type="text" name="txtEmail" class="f-input" id="txtEmail"
+                                placeholder="Username or Email" style="margin-bottom: 6px;" required>
                         </div>
-
+<!-- 
                         <div class="col-12">
                             <label class="f-label">Password*</label>
                             <input type="password" name="txtPassword" class="f-input" id="txtPassword"
@@ -82,9 +80,25 @@ if (isset($_POST['login_btn'])) {
                             <span class="error" id="error">
                                 <?php echo $loginErr; ?>
                             </span>
+                        </div> -->
 
+                        <div class="col-12">
+                            <label for="inputPswd" class="f-label">Password*</label>
+                            <div class="password-input-container" style="position: relative;">
+                                <input type="password" class="f-input password" name="txtPassword" id="txtPassword" placeholder="Password" style="margin-bottom: 30px;" maxlength="12" minlength="6"
+                                required>
+                                <span class="toggle-eye" onclick="togglePasswordVisibility()">
+                                    <i id="eyeIcon" class="fa fa-eye eyeIcon"></i>
+                                </span>
+                            </div>
+                            <span id="passwordError" class="error"></span>
+                            <span class="error" id="error">
+                                <?php echo $loginErr; ?>
+                            </span>
                         </div>
-                        <a class="f-label" href="RegForm.php">registration ?</a>
+
+
+                        <a class="f-label" href="RegForm.php">Sign Up ?</a>
                     </div>
                     <div class="modal-footer">
 
@@ -127,7 +141,7 @@ if (isset($_POST['login_btn'])) {
                                 <?php /* echo strtoupper($_SESSION["useremail"]);*/ ?>
                             </a>
                         </li> -->
-                        
+
                         <li class="nav-item" id="userDropdown" style="margin-top: -7px;">
                             <a class="nav-link" href="#" onclick="toggleDropdown()">
                                 <img class="user_logo" src="img/user.png" />
@@ -151,6 +165,8 @@ if (isset($_POST['login_btn'])) {
                             data-bs-target="#exampleModal">
                             LOGIN
                         </button>
+                        <a class="btn btn-primary bg-dark border-dark" href="RegForm.php">Sign Up</a>
+                        
                         <!-- <a href="login_page.php" class="btn btn-primary">LOGIN</a> -->
                         <?php
                     }

@@ -2,7 +2,7 @@
 <div class="bg_dark px-5 py-5 text-white">
 
     <h3 class="fw-bolder mb-5"> CONTACT US</h3>
-    <table class="table text-white">
+    <table class="Mytable text-white">
         <tr>
             <td>
                 Reach Us At
@@ -39,8 +39,6 @@
 
 </div>
 <!-- Bootstrap Javascript -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI/t1fRCeF0o3uq9bP5RqLyZJKr5S/Ja/7p2wGFM=" crossorigin="anonymous"></script>
-
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
      <script src="css/rochan.js"></script> 

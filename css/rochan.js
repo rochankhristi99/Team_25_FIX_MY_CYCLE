@@ -50,3 +50,48 @@ function myFunction() {
     }
     document.getElementById("demo").innerHTML = text;
   }
+
+  //Script 4 Toggle Eye Icon
+  function togglePasswordVisibility() {
+    var inputs = document.getElementsByClassName("password");
+    var eyeIcons = document.getElementsByClassName("eyeIcon");
+
+    // Loop through all input fields with the "password" class
+    for (var i = 0; i < inputs.length; i++) {
+        var input = inputs[i];
+        var eyeIcon = eyeIcons[i];
+
+        // Toggle password visibility for the current input field
+        if (input.type === "password") {
+            input.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        } else {
+            input.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+    }
+}
+
+function togglePasswordVisibility2() {
+  var inputs = document.getElementsByClassName("password2");
+  var eyeIcons = document.getElementsByClassName("eyeIcon");
+
+  // Loop through all input fields with the "password" class
+  for (var i = 0; i < inputs.length; i++) {
+      var input = inputs[i];
+      var eyeIcon = eyeIcons[i];
+
+      // Toggle password visibility for the current input field
+      if (input.type === "password") {
+          input.type = "text";
+          eyeIcon.classList.remove("fa-eye");
+          eyeIcon.classList.add("fa-eye-slash");
+      } else {
+          input.type = "password";
+          eyeIcon.classList.remove("fa-eye-slash");
+          eyeIcon.classList.add("fa-eye");
+      }
+  }
+}
