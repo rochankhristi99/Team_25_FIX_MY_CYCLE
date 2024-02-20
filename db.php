@@ -1,14 +1,14 @@
 <?php
 
-  $servername = "db";
-  $username = "fix_my_cycle";
-  $password = "abc@123";
-  $dbname = "fix_my_cycle_db";
-
-//$servername = "localhost";
-//$username = "rabayakhatun23000";
-//$password = "Ks3plqlK";
+//$servername = "db";
+//$username = "fix_my_cycle";
+//$password = "abc@123";
 //$dbname = "fix_my_cycle_db";
+
+$servername = "localhost";
+$username = "rabayakhatun23000";
+$password = "Ks3plqlK";
+$dbname = "wp_rabayakhatun23000 ";
 
 
 // $servername = "localhost";
